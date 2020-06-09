@@ -1,0 +1,136 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css?family=Proxima+Nova);.flex {
+  display: flex;
+}
+
+.flex .flex--align-center {
+  align-content: center;
+  justify-content: center;
+}
+
+.flex .flex--width-4 {
+  width: 4%;
+}
+
+.flex .flex--width-5 {
+  width: 5%;
+}
+
+.flex .flex--width-10 {
+  width: 10%;
+}
+
+.flex .flex--width-12 {
+  width: 12%;
+}
+
+.flex .flex--width-20 {
+  width: 20%;
+}
+
+.flex .flex--width-35 {
+  width: 35%;
+}
+
+.flex .flex--width-40 {
+  width: 40%;
+}
+
+.flex .flex--width-45 {
+  width: 45%;
+}
+
+.flex .flex--width-46 {
+  width: 46%;
+}
+
+.flex .flex--width-49 {
+  width: 49%;
+}
+
+.flex .flex--width-50 {
+  width: 50%;
+}
+
+.flex .flex--width-55 {
+  width: 55%;
+}
+
+.flex .flex--width-60 {
+  width: 60%;
+}
+
+.flex .flex--width-70 {
+  width: 70%;
+}
+
+.flex .flex--width-75 {
+  width: 75%;
+}
+
+.flex .flex--width-80 {
+  width: 80%;
+}
+
+.flex .flex--width-90 {
+  width: 90%;
+}
+
+.flex .flex--width-95 {
+  width: 95%;
+}
+
+.flex .flex--width-100 {
+  width: 100%;
+}
+
+.flex .flex--grow-1 {
+  flex-grow: 1;
+}
+
+.bg--color-sky-blue {
+  background-color: #06bee1;
+}
+
+.bg--color-blue-sapphire {
+  background-color: #0b4f6c;
+}
+
+.bg--color-periwinkle {
+  background-color: #d1cfe2;
+}
+
+.bg--color-black {
+  background-color: #191414;
+}
+
+.bg--color-warm-black {
+  background-color: #034748;
+}
+
+.text--color-sky-blue {
+  color: #06bee1;
+}
+
+.text--color-blue-sapphire {
+  color: #0b4f6c;
+}
+
+.text--color-periwinkle {
+  color: #d1cfe2;
+}
+
+.text--color-black {
+  color: #191414;
+}
+
+.text--color-warm-black {
+  color: #034748;
+}
+
+body {
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
