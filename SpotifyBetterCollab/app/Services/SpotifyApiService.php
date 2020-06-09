@@ -16,9 +16,8 @@ use function var_dump;
 
 class SpotifyApiService
 {
-    // move to config
-    private $clientId = '6575ff02122e4769a7e1b06a11727bbc';
-    private $clientSecret = 'fdc374c3d9ae4a939e1a043b3a358141';
+    private $clientId;
+    private $clientSecret;
     private $clientBearer;
 
     protected $spotifyApi;
@@ -28,6 +27,8 @@ class SpotifyApiService
      */
     public function __construct()
     {
+        $this->clientId = env('SPOTIFY_API_CLIENT_ID', false);
+        $this->clientSecret = env('SPOTIFY_API_CLIENT_SECRET', false);
         $this->spotifyApi = new Client(['base_uri' => 'https://api.spotify.com/v1/']);
         $this->spotifyAccountApi = new Client(['base_uri' => 'https://accounts.spotify.com/api/']);
         $this->clientBearer = base64_encode($this->clientId . ':' . $this->clientSecret);
