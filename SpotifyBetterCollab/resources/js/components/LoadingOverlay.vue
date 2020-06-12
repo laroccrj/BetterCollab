@@ -1,7 +1,7 @@
 <template>
     <div v-if="loading" class='loading bg--color-black text--color-lighter-grey'>
         <div class="loading-spinner font-size--larger flex flex--width-100 flex-horizontal-center flex-vertical-center">
-            <div>
+            <div class="text--color-sky-blue">
                 <i class="fa fa-spinner fa-spin"></i>
             </div>
         </div>

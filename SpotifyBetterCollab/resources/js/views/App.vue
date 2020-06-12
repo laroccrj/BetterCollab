@@ -1,47 +1,13 @@
 <template>
     <div id="container" class="flex flex-align-items-stretch flex-direction-column overflow-hidden">
-        <div>
-            <div class="flex flex-space-between flex-vertical-center bg--color-sky-blue text--color-black padding--1">
-                <div class="title">
-                    List Together For Spotify
-                </div>
-                <div v-if="!user">
-                    <a href="/login">
-                        <div class="login-button bg--color-black flex">
-                            <div class="flex">
-                                <img src="img/spotify_icon.png">
-                            </div>
-                            <div class="login-button-text flex-grow-1">
-                                Login
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div v-else>
-                    <div class="nav-menu flex flex--align-center">
-                        <div class="flex--width-35">
-                            Playlists
-                        </div>
-                        <div class="flex--width-35">
-                            Logout
-                        </div>
-                        <div class="flex--width-35">
-                            <img :src="user.profile_pic" class="profile-pic">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <main class="flex flex-horizontal-center text--color-lighter-grey flex--width-100 flex-align-items-stretch overflow-hidden">
-            <loading-overlay></loading-overlay>
             <div v-if="loadingUser">Loading...</div>
-            <div v-else class="flex flex-horizontal-center text--color-lighter-grey flex--width-100">
-                <div id="sidebar" class="flex flex--width-20  bg--color-black">
-                    <sidebar></sidebar>
-                </div>
-                <div id="content" class="flex flex--grow-1 bg--color-dark-grey overflow-auto">
-                    <playlist></playlist>
-                </div>
+            <div id="sidebar" class="flex flex--width-20  bg--color-black">
+                <sidebar></sidebar>
+            </div>
+            <div id="content" class="flex flex--grow-1 bg--color-dark-grey overflow-auto">
+                <loading-overlay></loading-overlay>
+                <playlist></playlist>
             </div>
         </main>
     </div>
@@ -115,6 +81,9 @@
         overflow: hidden;
     }
     main {
+        position: relative;
+    }
+    #content {
         position: relative;
     }
 </style>

@@ -1,8 +1,15 @@
 
 <template>
     <div class="text--color-lighter-grey flex--grow-1">
-        <div class="text--color-white font-size--large padding--5">Playlists</div>
-        <create-playlist class="padding-left-10 create-playlist"
+        <div class="padding--5">
+            <img src="/img/title.png">
+        </div>
+        <a href="/logout">
+            <div class="logout font-size--large padding--5 create-playlist padding-left-10">
+                Logout
+            </div>
+        </a>
+        <create-playlist class="padding-left-10"
             @newPlaylist="newPlaylist">
         </create-playlist>
         <div v-for="playlist in playlists"
@@ -21,10 +28,11 @@
     import axios from "axios"
     import { mapState } from 'vuex'
     import CreatePlaylist from "../components/CreatePlaylist";
+    import UserProfile from "../components/UserProfile";
 
     export default {
         name: "Sidebar",
-        components: {CreatePlaylist},
+        components: {UserProfile, CreatePlaylist},
         data () {
             return {
                 newPlaylistName : "",
@@ -72,5 +80,18 @@
     .create-playlist {
         border-bottom: 1px solid;
         padding-bottom: 5px;
+        margin-bottom: 5px;
+    }
+    .logout {
+        text-decoration: none;
+    }
+    a {
+        text-decoration: none;
+    }
+    a:visited {color:#F9F5FF;}
+    a:active {color:#F9F5FF;}
+    .logout:hover {
+        cursor: pointer;
+        color: #F9F5FF;
     }
 </style>

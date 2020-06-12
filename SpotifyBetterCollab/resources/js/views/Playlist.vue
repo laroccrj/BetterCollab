@@ -1,73 +1,71 @@
 <template>
-    <div style="position: relative; width: 100%">
-        <div v-if="playlist" class="flex--width-100 flex flex-align-items-stretch flex-direction-column">
-            <div class="head flex--width-100 bg--color-dark-grey padding--1">
-                <div class="text--color-sky-blue font-size--larger">{{ playlist.name }}</div>
-                <div v-if="isOwner" class="owner-options">
-                    <span :class="[showSettings ? 'underline' : '', 'tag']" @click="toggleSettings"><i class="fas fa-cog"></i> Settings</span>
-                    <span :class="[showShareUrl ? 'underline' : '', 'tag']" @click="toggleShareUrl"><i class="fas fa-link"></i> Share Url</span>
-                    <span class="tag" @click="shuffle"><i class="fas fa-random"></i> Shuffle</span>
-                    <span class="tag" v-if="showShareUrlCopied"><span class="text--color-sky-blue ">Copied to clipboard</span></span>
-                    <div v-if="showShareUrl">
-                        <span class="tag">{{ collabLink }}</span>
-                    </div>
-                    <div v-if="showSettings">
-                        <playlist-admin-controls v-if="isOwner"
-                                                 :playlist="playlist"
-                                                 v-on:playlist-update="updatePlaylist">
-                        </playlist-admin-controls>
-                    </div>
+    <div v-if="playlist" class="flex--width-100 flex flex-align-items-stretch flex-direction-column">
+        <div class="head flex--width-100 bg--color-dark-grey padding--1">
+            <div class="text--color-sky-blue font-size--larger">{{ playlist.name }}</div>
+            <div v-if="isOwner" class="owner-options">
+                <span :class="[showSettings ? 'underline' : '', 'tag']" @click="toggleSettings"><i class="fas fa-cog"></i> Settings</span>
+                <span :class="[showShareUrl ? 'underline' : '', 'tag']" @click="toggleShareUrl"><i class="fas fa-link"></i> Share Url</span>
+                <span class="tag" @click="shuffle"><i class="fas fa-random"></i> Shuffle</span>
+                <span class="tag" v-if="showShareUrlCopied"><span class="text--color-sky-blue ">Copied to clipboard</span></span>
+                <div v-if="showShareUrl">
+                    <span class="tag">{{ collabLink }}</span>
                 </div>
-                <div class="flex flex-vertical-center">
+                <div v-if="showSettings">
+                    <playlist-admin-controls v-if="isOwner"
+                                             :playlist="playlist"
+                                             v-on:playlist-update="updatePlaylist">
+                    </playlist-admin-controls>
+                </div>
+            </div>
+            <div class="flex flex-vertical-center">
+                <div>
+                    <img :src="playlist.user.profile_pic" style="border-radius: 50%; height:50px; width:50px;">
+                </div>
+                <div class="padding-left-10px">
+                    <div class="text--color-white font-size--large">{{playlist.user.name}}</div>
                     <div>
-                        <img :src="playlist.user.profile_pic" style="border-radius: 50%; height:50px; width:50px;">
-                    </div>
-                    <div class="padding-left-10px">
-                        <div class="text--color-white font-size--large">{{playlist.user.name}}</div>
-                        <div>
-                            <span class="tag">Owner</span>
-                        </div>
+                        <span class="tag">Owner</span>
                     </div>
                 </div>
             </div>
-            <div class="tabs flex flex-align-items-stretch">
-                <div @click="songsTab"
-                    :class="[songsTabSel ? 'tab-selected' : '', 'all-tab', 'tab', 'flex', 'flex-vertical-center', 'flex-horizontal-center', 'font-size--large']">
-                    <i class="fas fa-music"></i>
+        </div>
+        <div class="tabs flex flex-align-items-stretch">
+            <div @click="songsTab"
+                :class="[songsTabSel ? 'tab-selected' : '', 'all-tab', 'tab', 'flex', 'flex-vertical-center', 'flex-horizontal-center', 'font-size--large']">
+                <i class="fas fa-music"></i>
+            </div>
+            <div @click="addTab"
+                :class="[addTabSel ? 'tab-selected' : '', 'all-tab', 'tab', 'flex', 'flex-vertical-center', 'flex-horizontal-center', 'font-size--large']">
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="flex contributor-tabs">
+                <div v-for="contributor in contributors"
+                     @click="setContributor(contributor)"
+                     :class="[isContributorSelected(contributor) ? 'tab-selected' : '', 'contributor-tab', 'tab']">
+                    <user-profile :user="contributor.user"
+                        :show-name="isContributorSelected(contributor)"></user-profile>
                 </div>
-                <div @click="addTab"
-                    :class="[addTabSel ? 'tab-selected' : '', 'all-tab', 'tab', 'flex', 'flex-vertical-center', 'flex-horizontal-center', 'font-size--large']">
-                    <i class="fas fa-plus"></i>
-                </div>
-                <div class="flex contributor-tabs">
-                    <div v-for="contributor in contributors"
-                         @click="setContributor(contributor)"
-                         :class="[isContributorSelected(contributor) ? 'tab-selected' : '', 'contributor-tab', 'tab']">
-                        <user-profile :user="contributor.user"
-                            :show-name="isContributorSelected(contributor)"></user-profile>
+            </div>
+        </div>
+        <div class="body bg--color-grey padding--1">
+            <div v-if="songsTabSel">
+                <song v-for="song in songs"
+                      :key="song.id"
+                      :song="song">
+                    <div v-if="song.contributor_id == userContributor.id"
+                         class="icon-button font-size--large flex flex-vertical-center flex-horizontal-center"
+                         @click="deleteSong(song)">
+                        <i class="fas fa-times"></i>
                     </div>
-                </div>
+                    <user-profile :user="song.user" :show-name="false"></user-profile>
+                </song>
             </div>
-            <div class="body bg--color-grey padding--1">
-                <div v-if="songsTabSel">
-                    <song v-for="song in songs"
-                          :key="song.id"
-                          :song="song">
-                        <div v-if="song.contributor_id == userContributor.id"
-                             class="icon-button font-size--large flex flex-vertical-center flex-horizontal-center"
-                             @click="deleteSong(song)">
-                            <i class="fas fa-times"></i>
-                        </div>
-                        <user-profile :user="song.user" :show-name="false"></user-profile>
-                    </song>
-                </div>
-                <song-adder v-else-if="addTabSel"
-                    :playlist="playlist"
-                    :current-songs="songs"
-                    @add-song="addSong"
-                    @setLoading="setLoading">
-                </song-adder>
-            </div>
+            <song-adder v-else-if="addTabSel"
+                :playlist="playlist"
+                :current-songs="songs"
+                @add-song="addSong"
+                @setLoading="setLoading">
+            </song-adder>
         </div>
     </div>
 </template>

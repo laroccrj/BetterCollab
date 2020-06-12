@@ -4,10 +4,11 @@
                @focusin="focusInput"
                ref="nameInput"
                type="text"
-               class="input text--color-lighter-grey"
+               class="input text--color-lighter-grey add"
                v-model="name">
-        <span v-if="saving"><i class="fas fa-spinner fa-spin"></i></span>
-        <span v-if="showSave" class="add" @click="newPlaylist"><i class="fas fa-plus-circle"></i></span>
+        <span v-if="saving" class="text--color-sky-blue"><i class="fas fa-spinner fa-spin"></i></span>
+        <span v-if="showSave" class="add text--color-sky-blue" @click="newPlaylist"><i class="fas fa-plus-circle"></i></span>
+        <span v-else-if='!saving' @click="setFocus" class="add text--color-sky-blue"><i class="fas fa-plus"></i></span>
     </div>
 </template>
 
@@ -33,6 +34,10 @@
             }
         },
         methods: {
+            setFocus () {
+                this.$refs['nameInput'].focus();
+                this.name = ''
+            },
             focusInput() {
                 this.name = ''
             },
@@ -42,7 +47,6 @@
             },
             async newPlaylist() {
                 this.saving = true
-                console.log('saving')
                 await axios
                     .post('/api/playlist/new', { name: this.name })
                     .then(response => (this.$emit('newPlaylist', response.data)))
@@ -54,10 +58,10 @@
 </script>
 
 <style scoped>
-    .user-profile {
-        display: inline-block;
-    }
     .add:hover {
         cursor: pointer;
+    }
+    input {
+        padding: 0;
     }
 </style>

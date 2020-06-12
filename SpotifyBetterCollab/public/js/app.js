@@ -1943,6 +1943,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CreatePlaylist",
@@ -1963,6 +1964,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   methods: {
+    setFocus: function setFocus() {
+      this.$refs['nameInput'].focus();
+      this.name = '';
+    },
     focusInput: function focusInput() {
       this.name = '';
     },
@@ -1978,19 +1983,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _this.saving = true;
-                console.log('saving');
-                _context.next = 4;
+                _context.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/playlist/new', {
                   name: _this.name
                 }).then(function (response) {
                   return _this.$emit('newPlaylist', response.data);
                 });
 
-              case 4:
+              case 3:
                 _this.saving = false;
                 _this.name = _this.placeHolderText;
 
-              case 6:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -2481,40 +2485,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2611,8 +2581,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
 //
 //
 //
@@ -3053,6 +3021,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _components_CreatePlaylist__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/CreatePlaylist */ "./resources/js/components/CreatePlaylist.vue");
+/* harmony import */ var _components_UserProfile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/UserProfile */ "./resources/js/components/UserProfile.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -3084,12 +3053,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Sidebar",
   components: {
+    UserProfile: _components_UserProfile__WEBPACK_IMPORTED_MODULE_4__["default"],
     CreatePlaylist: _components_CreatePlaylist__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
@@ -3163,7 +3141,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.user-profile[data-v-801de1ce] {\n    display: inline-block;\n}\n.add[data-v-801de1ce]:hover {\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.add[data-v-801de1ce]:hover {\n    cursor: pointer;\n}\ninput[data-v-801de1ce] {\n    padding: 0;\n}\n", ""]);
 
 // exports
 
@@ -3296,7 +3274,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#container[data-v-91ac6b5c], main[data-v-91ac6b5c] {\n    height: 100%;\n}\n.profile-pic[data-v-91ac6b5c] {\n    border-radius: 50%;\n    height:50px;\n    width:50px;\n    display: block;\n}\n.title[data-v-91ac6b5c] {\n    font-size: 2rem;\n    font-weight: bold;\n    margin: auto 0;\n}\n.header div[data-v-91ac6b5c] {\n    text-align: center;\n    vertical-align: middle;\n}\n.login-button img[data-v-91ac6b5c] {\n    height: 30px;\n    width: 30px;\n}\n.login-button[data-v-91ac6b5c] {\n    color: white;\n    padding: 10px;\n    border-radius: 45px;\n}\n.login-button-text[data-v-91ac6b5c] {\n    margin: auto 0;\n    text-align: center;\n    font-size: 1.1rem;\n    padding: 0 10px;\n    font-weight: bold;\n}\n#sidebar[data-v-91ac6b5c] {\n    max-width: 200px;\n}\n.overflow-auto[data-v-91ac6b5c] {\n    overflow: auto;\n}\n.overflow-hidden[data-v-91ac6b5c] {\n    overflow: hidden;\n}\nmain[data-v-91ac6b5c] {\n    position: relative;\n}\n", ""]);
+exports.push([module.i, "\n#container[data-v-91ac6b5c], main[data-v-91ac6b5c] {\n    height: 100%;\n}\n.profile-pic[data-v-91ac6b5c] {\n    border-radius: 50%;\n    height:50px;\n    width:50px;\n    display: block;\n}\n.title[data-v-91ac6b5c] {\n    font-size: 2rem;\n    font-weight: bold;\n    margin: auto 0;\n}\n.header div[data-v-91ac6b5c] {\n    text-align: center;\n    vertical-align: middle;\n}\n.login-button img[data-v-91ac6b5c] {\n    height: 30px;\n    width: 30px;\n}\n.login-button[data-v-91ac6b5c] {\n    color: white;\n    padding: 10px;\n    border-radius: 45px;\n}\n.login-button-text[data-v-91ac6b5c] {\n    margin: auto 0;\n    text-align: center;\n    font-size: 1.1rem;\n    padding: 0 10px;\n    font-weight: bold;\n}\n#sidebar[data-v-91ac6b5c] {\n    max-width: 200px;\n}\n.overflow-auto[data-v-91ac6b5c] {\n    overflow: auto;\n}\n.overflow-hidden[data-v-91ac6b5c] {\n    overflow: hidden;\n}\nmain[data-v-91ac6b5c] {\n    position: relative;\n}\n#content[data-v-91ac6b5c] {\n    position: relative;\n}\n", ""]);
 
 // exports
 
@@ -3334,7 +3312,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.playlist[data-v-02a6918d] {\n    text-decoration: none;\n    margin-top: 5px;\n}\n.playlist[data-v-02a6918d]:hover {\n    cursor: pointer;\n    background-color: #535353;\n}\n.playlist-selected[data-v-02a6918d] {\n    box-shadow: inset 5px 0px 0px 0px #06bee1;\n}\n.create-playlist[data-v-02a6918d] {\n    border-bottom: 1px solid;\n    padding-bottom: 5px;\n}\n", ""]);
+exports.push([module.i, "\n.playlist[data-v-02a6918d] {\n    text-decoration: none;\n    margin-top: 5px;\n}\n.playlist[data-v-02a6918d]:hover {\n    cursor: pointer;\n    background-color: #535353;\n}\n.playlist-selected[data-v-02a6918d] {\n    box-shadow: inset 5px 0px 0px 0px #06bee1;\n}\n.create-playlist[data-v-02a6918d] {\n    border-bottom: 1px solid;\n    padding-bottom: 5px;\n    margin-bottom: 5px;\n}\n.logout[data-v-02a6918d] {\n    text-decoration: none;\n}\na[data-v-02a6918d] {\n    text-decoration: none;\n}\na[data-v-02a6918d]:visited {color:#F9F5FF;}\na[data-v-02a6918d]:active {color:#F9F5FF;}\n.logout[data-v-02a6918d]:hover {\n    cursor: pointer;\n    color: #F9F5FF;\n}\n", ""]);
 
 // exports
 
@@ -5565,7 +5543,7 @@ var render = function() {
         }
       ],
       ref: "nameInput",
-      staticClass: "input text--color-lighter-grey",
+      staticClass: "input text--color-lighter-grey add",
       attrs: { type: "text" },
       domProps: { value: _vm.name },
       on: {
@@ -5581,13 +5559,29 @@ var render = function() {
     }),
     _vm._v(" "),
     _vm.saving
-      ? _c("span", [_c("i", { staticClass: "fas fa-spinner fa-spin" })])
+      ? _c("span", { staticClass: "text--color-sky-blue" }, [
+          _c("i", { staticClass: "fas fa-spinner fa-spin" })
+        ])
       : _vm._e(),
     _vm._v(" "),
     _vm.showSave
-      ? _c("span", { staticClass: "add", on: { click: _vm.newPlaylist } }, [
-          _c("i", { staticClass: "fas fa-plus-circle" })
-        ])
+      ? _c(
+          "span",
+          {
+            staticClass: "add text--color-sky-blue",
+            on: { click: _vm.newPlaylist }
+          },
+          [_c("i", { staticClass: "fas fa-plus-circle" })]
+        )
+      : !_vm.saving
+      ? _c(
+          "span",
+          {
+            staticClass: "add text--color-sky-blue",
+            on: { click: _vm.setFocus }
+          },
+          [_c("i", { staticClass: "fas fa-plus" })]
+        )
       : _vm._e()
   ])
 }
@@ -5632,7 +5626,11 @@ var staticRenderFns = [
         staticClass:
           "loading-spinner font-size--larger flex flex--width-100 flex-horizontal-center flex-vertical-center"
       },
-      [_c("div", [_c("i", { staticClass: "fa fa-spinner fa-spin" })])]
+      [
+        _c("div", { staticClass: "text--color-sky-blue" }, [
+          _c("i", { staticClass: "fa fa-spinner fa-spin" })
+        ])
+      ]
     )
   }
 ]
@@ -6027,52 +6025,6 @@ var render = function() {
       attrs: { id: "container" }
     },
     [
-      _c("div", [
-        _c(
-          "div",
-          {
-            staticClass:
-              "flex flex-space-between flex-vertical-center bg--color-sky-blue text--color-black padding--1"
-          },
-          [
-            _c("div", { staticClass: "title" }, [
-              _vm._v(
-                "\n                List Together For Spotify\n            "
-              )
-            ]),
-            _vm._v(" "),
-            !_vm.user
-              ? _c("div", [_vm._m(0)])
-              : _c("div", [
-                  _c(
-                    "div",
-                    { staticClass: "nav-menu flex flex--align-center" },
-                    [
-                      _c("div", { staticClass: "flex--width-35" }, [
-                        _vm._v(
-                          "\n                        Playlists\n                    "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "flex--width-35" }, [
-                        _vm._v(
-                          "\n                        Logout\n                    "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "flex--width-35" }, [
-                        _c("img", {
-                          staticClass: "profile-pic",
-                          attrs: { src: _vm.user.profile_pic }
-                        })
-                      ])
-                    ]
-                  )
-                ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
       _c(
         "main",
         {
@@ -6080,65 +6032,34 @@ var render = function() {
             "flex flex-horizontal-center text--color-lighter-grey flex--width-100 flex-align-items-stretch overflow-hidden"
         },
         [
-          _c("loading-overlay"),
+          _vm.loadingUser ? _c("div", [_vm._v("Loading...")]) : _vm._e(),
           _vm._v(" "),
-          _vm.loadingUser
-            ? _c("div", [_vm._v("Loading...")])
-            : _c(
-                "div",
-                {
-                  staticClass:
-                    "flex flex-horizontal-center text--color-lighter-grey flex--width-100"
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "flex flex--width-20  bg--color-black",
-                      attrs: { id: "sidebar" }
-                    },
-                    [_c("sidebar")],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "flex flex--grow-1 bg--color-dark-grey overflow-auto",
-                      attrs: { id: "content" }
-                    },
-                    [_c("playlist")],
-                    1
-                  )
-                ]
-              )
-        ],
-        1
+          _c(
+            "div",
+            {
+              staticClass: "flex flex--width-20  bg--color-black",
+              attrs: { id: "sidebar" }
+            },
+            [_c("sidebar")],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "flex flex--grow-1 bg--color-dark-grey overflow-auto",
+              attrs: { id: "content" }
+            },
+            [_c("loading-overlay"), _vm._v(" "), _c("playlist")],
+            1
+          )
+        ]
       )
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "/login" } }, [
-      _c("div", { staticClass: "login-button bg--color-black flex" }, [
-        _c("div", { staticClass: "flex" }, [
-          _c("img", { attrs: { src: "img/spotify_icon.png" } })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "login-button-text flex-grow-1" }, [
-          _vm._v(
-            "\n                            Login\n                        "
-          )
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -6184,251 +6105,241 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticStyle: { position: "relative", width: "100%" } }, [
-    _vm.playlist
-      ? _c(
-          "div",
-          {
-            staticClass:
-              "flex--width-100 flex flex-align-items-stretch flex-direction-column"
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "head flex--width-100 bg--color-dark-grey padding--1"
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "text--color-sky-blue font-size--larger" },
-                  [_vm._v(_vm._s(_vm.playlist.name))]
-                ),
-                _vm._v(" "),
-                _vm.isOwner
-                  ? _c("div", { staticClass: "owner-options" }, [
-                      _c(
-                        "span",
-                        {
-                          class: [_vm.showSettings ? "underline" : "", "tag"],
-                          on: { click: _vm.toggleSettings }
-                        },
-                        [
-                          _c("i", { staticClass: "fas fa-cog" }),
-                          _vm._v(" Settings")
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          class: [_vm.showShareUrl ? "underline" : "", "tag"],
-                          on: { click: _vm.toggleShareUrl }
-                        },
-                        [
-                          _c("i", { staticClass: "fas fa-link" }),
-                          _vm._v(" Share Url")
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        { staticClass: "tag", on: { click: _vm.shuffle } },
-                        [
-                          _c("i", { staticClass: "fas fa-random" }),
-                          _vm._v(" Shuffle")
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm.showShareUrlCopied
-                        ? _c("span", { staticClass: "tag" }, [
-                            _c(
-                              "span",
-                              { staticClass: "text--color-sky-blue " },
-                              [_vm._v("Copied to clipboard")]
-                            )
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.showShareUrl
-                        ? _c("div", [
-                            _c("span", { staticClass: "tag" }, [
-                              _vm._v(_vm._s(_vm.collabLink))
-                            ])
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.showSettings
-                        ? _c(
-                            "div",
-                            [
-                              _vm.isOwner
-                                ? _c("playlist-admin-controls", {
-                                    attrs: { playlist: _vm.playlist },
-                                    on: {
-                                      "playlist-update": _vm.updatePlaylist
-                                    }
-                                  })
-                                : _vm._e()
-                            ],
-                            1
-                          )
-                        : _vm._e()
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", { staticClass: "flex flex-vertical-center" }, [
-                  _c("div", [
-                    _c("img", {
-                      staticStyle: {
-                        "border-radius": "50%",
-                        height: "50px",
-                        width: "50px"
-                      },
-                      attrs: { src: _vm.playlist.user.profile_pic }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "padding-left-10px" }, [
+  return _vm.playlist
+    ? _c(
+        "div",
+        {
+          staticClass:
+            "flex--width-100 flex flex-align-items-stretch flex-direction-column"
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "head flex--width-100 bg--color-dark-grey padding--1"
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "text--color-sky-blue font-size--larger" },
+                [_vm._v(_vm._s(_vm.playlist.name))]
+              ),
+              _vm._v(" "),
+              _vm.isOwner
+                ? _c("div", { staticClass: "owner-options" }, [
                     _c(
-                      "div",
-                      { staticClass: "text--color-white font-size--large" },
-                      [_vm._v(_vm._s(_vm.playlist.user.name))]
+                      "span",
+                      {
+                        class: [_vm.showSettings ? "underline" : "", "tag"],
+                        on: { click: _vm.toggleSettings }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-cog" }),
+                        _vm._v(" Settings")
+                      ]
                     ),
                     _vm._v(" "),
-                    _vm._m(0)
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "tabs flex flex-align-items-stretch" }, [
-              _c(
-                "div",
-                {
-                  class: [
-                    _vm.songsTabSel ? "tab-selected" : "",
-                    "all-tab",
-                    "tab",
-                    "flex",
-                    "flex-vertical-center",
-                    "flex-horizontal-center",
-                    "font-size--large"
-                  ],
-                  on: { click: _vm.songsTab }
-                },
-                [_c("i", { staticClass: "fas fa-music" })]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  class: [
-                    _vm.addTabSel ? "tab-selected" : "",
-                    "all-tab",
-                    "tab",
-                    "flex",
-                    "flex-vertical-center",
-                    "flex-horizontal-center",
-                    "font-size--large"
-                  ],
-                  on: { click: _vm.addTab }
-                },
-                [_c("i", { staticClass: "fas fa-plus" })]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "flex contributor-tabs" },
-                _vm._l(_vm.contributors, function(contributor) {
-                  return _c(
-                    "div",
-                    {
-                      class: [
-                        _vm.isContributorSelected(contributor)
-                          ? "tab-selected"
-                          : "",
-                        "contributor-tab",
-                        "tab"
-                      ],
-                      on: {
-                        click: function($event) {
-                          return _vm.setContributor(contributor)
-                        }
-                      }
-                    },
-                    [
-                      _c("user-profile", {
-                        attrs: {
-                          user: contributor.user,
-                          "show-name": _vm.isContributorSelected(contributor)
-                        }
-                      })
-                    ],
-                    1
-                  )
-                }),
-                0
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "body bg--color-grey padding--1" },
-              [
-                _vm.songsTabSel
-                  ? _c(
-                      "div",
-                      _vm._l(_vm.songs, function(song) {
-                        return _c(
-                          "song",
-                          { key: song.id, attrs: { song: song } },
+                    _c(
+                      "span",
+                      {
+                        class: [_vm.showShareUrl ? "underline" : "", "tag"],
+                        on: { click: _vm.toggleShareUrl }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-link" }),
+                        _vm._v(" Share Url")
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      { staticClass: "tag", on: { click: _vm.shuffle } },
+                      [
+                        _c("i", { staticClass: "fas fa-random" }),
+                        _vm._v(" Shuffle")
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm.showShareUrlCopied
+                      ? _c("span", { staticClass: "tag" }, [
+                          _c("span", { staticClass: "text--color-sky-blue " }, [
+                            _vm._v("Copied to clipboard")
+                          ])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.showShareUrl
+                      ? _c("div", [
+                          _c("span", { staticClass: "tag" }, [
+                            _vm._v(_vm._s(_vm.collabLink))
+                          ])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.showSettings
+                      ? _c(
+                          "div",
                           [
-                            song.contributor_id == _vm.userContributor.id
-                              ? _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "icon-button font-size--large flex flex-vertical-center flex-horizontal-center",
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.deleteSong(song)
-                                      }
-                                    }
-                                  },
-                                  [_c("i", { staticClass: "fas fa-times" })]
-                                )
-                              : _vm._e(),
-                            _vm._v(" "),
-                            _c("user-profile", {
-                              attrs: { user: song.user, "show-name": false }
-                            })
+                            _vm.isOwner
+                              ? _c("playlist-admin-controls", {
+                                  attrs: { playlist: _vm.playlist },
+                                  on: { "playlist-update": _vm.updatePlaylist }
+                                })
+                              : _vm._e()
                           ],
                           1
                         )
-                      }),
-                      1
-                    )
-                  : _vm.addTabSel
-                  ? _c("song-adder", {
+                      : _vm._e()
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex flex-vertical-center" }, [
+                _c("div", [
+                  _c("img", {
+                    staticStyle: {
+                      "border-radius": "50%",
+                      height: "50px",
+                      width: "50px"
+                    },
+                    attrs: { src: _vm.playlist.user.profile_pic }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "padding-left-10px" }, [
+                  _c(
+                    "div",
+                    { staticClass: "text--color-white font-size--large" },
+                    [_vm._v(_vm._s(_vm.playlist.user.name))]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "tabs flex flex-align-items-stretch" }, [
+            _c(
+              "div",
+              {
+                class: [
+                  _vm.songsTabSel ? "tab-selected" : "",
+                  "all-tab",
+                  "tab",
+                  "flex",
+                  "flex-vertical-center",
+                  "flex-horizontal-center",
+                  "font-size--large"
+                ],
+                on: { click: _vm.songsTab }
+              },
+              [_c("i", { staticClass: "fas fa-music" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                class: [
+                  _vm.addTabSel ? "tab-selected" : "",
+                  "all-tab",
+                  "tab",
+                  "flex",
+                  "flex-vertical-center",
+                  "flex-horizontal-center",
+                  "font-size--large"
+                ],
+                on: { click: _vm.addTab }
+              },
+              [_c("i", { staticClass: "fas fa-plus" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "flex contributor-tabs" },
+              _vm._l(_vm.contributors, function(contributor) {
+                return _c(
+                  "div",
+                  {
+                    class: [
+                      _vm.isContributorSelected(contributor)
+                        ? "tab-selected"
+                        : "",
+                      "contributor-tab",
+                      "tab"
+                    ],
+                    on: {
+                      click: function($event) {
+                        return _vm.setContributor(contributor)
+                      }
+                    }
+                  },
+                  [
+                    _c("user-profile", {
                       attrs: {
-                        playlist: _vm.playlist,
-                        "current-songs": _vm.songs
-                      },
-                      on: {
-                        "add-song": _vm.addSong,
-                        setLoading: _vm.setLoading
+                        user: contributor.user,
+                        "show-name": _vm.isContributorSelected(contributor)
                       }
                     })
-                  : _vm._e()
-              ],
-              1
+                  ],
+                  1
+                )
+              }),
+              0
             )
-          ]
-        )
-      : _vm._e()
-  ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "body bg--color-grey padding--1" },
+            [
+              _vm.songsTabSel
+                ? _c(
+                    "div",
+                    _vm._l(_vm.songs, function(song) {
+                      return _c(
+                        "song",
+                        { key: song.id, attrs: { song: song } },
+                        [
+                          song.contributor_id == _vm.userContributor.id
+                            ? _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "icon-button font-size--large flex flex-vertical-center flex-horizontal-center",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.deleteSong(song)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fas fa-times" })]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("user-profile", {
+                            attrs: { user: song.user, "show-name": false }
+                          })
+                        ],
+                        1
+                      )
+                    }),
+                    1
+                  )
+                : _vm.addTabSel
+                ? _c("song-adder", {
+                    attrs: {
+                      playlist: _vm.playlist,
+                      "current-songs": _vm.songs
+                    },
+                    on: { "add-song": _vm.addSong, setLoading: _vm.setLoading }
+                  })
+                : _vm._e()
+            ],
+            1
+          )
+        ]
+      )
+    : _vm._e()
 }
 var staticRenderFns = [
   function() {
@@ -6530,14 +6441,12 @@ var render = function() {
     "div",
     { staticClass: "text--color-lighter-grey flex--grow-1" },
     [
-      _c(
-        "div",
-        { staticClass: "text--color-white font-size--large padding--5" },
-        [_vm._v("Playlists")]
-      ),
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
       _vm._v(" "),
       _c("create-playlist", {
-        staticClass: "padding-left-10 create-playlist",
+        staticClass: "padding-left-10",
         on: { newPlaylist: _vm.newPlaylist }
       }),
       _vm._v(" "),
@@ -6565,7 +6474,31 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "padding--5" }, [
+      _c("img", { attrs: { src: "/img/title.png" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "/logout" } }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "logout font-size--large padding--5 create-playlist padding-left-10"
+        },
+        [_vm._v("\n            Logout\n        ")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
