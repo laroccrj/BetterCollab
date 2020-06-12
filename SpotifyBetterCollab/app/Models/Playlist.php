@@ -5,6 +5,7 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use function session;
 
 class Playlist extends Model
@@ -36,7 +37,7 @@ class Playlist extends Model
     }
 
     /**
-     * @return Contributor[]
+     * @return Contributor[] | Collection
      */
     public function getContributors()
     {
@@ -66,7 +67,7 @@ class Playlist extends Model
     }
 
     /**
-     * @return Song[]
+     * @return Song[] | Collection
      */
     public function getSongs()
     {

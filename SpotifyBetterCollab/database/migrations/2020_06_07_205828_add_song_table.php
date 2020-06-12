@@ -25,6 +25,8 @@ class AddSongTable extends Migration
             $table->string('artist');
             $table->text('album_art');
             $table->string('album');
+            $table->integer('priority');
+            $table->index('priority');
             $table->timestamps();
         });
     }

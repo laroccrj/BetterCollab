@@ -1,10 +1,6 @@
 .flex {
     display: flex;
 
-    .flex--align-center {
-        align-content: center;
-        justify-content: center;
-    }
     .flex--width-4 {
         width: 4%;
     }
@@ -84,4 +80,46 @@
     .flex--grow-1 {
         flex-grow: 1;
     }
+}
+
+.flex-horizontal-center {
+    justify-content: center;
+}
+
+.flex-vertical-center {
+    align-items: center;
+}
+
+.flex-align-items-stretch {
+    align-items: stretch;
+}
+
+.flex-space-between {
+    justify-content: space-between;
+}
+
+.padding--1 {
+    padding: 1%;
+}
+
+.padding--5 {
+    padding: 5%;
+}
+
+.padding-left-10 {
+    padding-left: 10%;
+}
+
+.padding-left-10px {
+    padding-left: 10px;
+}
+.flex-direction-column {
+    flex-direction: column;
+}
+.icon-button {
+    width: 50px;
+}
+.icon-button:hover {
+    cursor: pointer;
+    color: #F9F5FF;
 }

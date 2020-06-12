@@ -9,8 +9,10 @@ use App\Models\Song;
 use App\Models\User;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
+use Illuminate\Support\Collection;
 use function base64_encode;
 use function json_decode;
+use function print_r;
 use function time;
 use function var_dump;
 
@@ -120,8 +122,9 @@ class SpotifyApiService
         return $playlist;
     }
 
-    public function trackSearch(User $user, string $query, int $offset = 0)
+    public function trackSearch(User $user, ?string $query, int $offset = 0)
     {
+        $query = $query ?? 'a';
         $user = $this->checkRefresh($user);
         $result = $this->spotifyApi->get('search', [
             'headers' => [
@@ -182,5 +185,44 @@ class SpotifyApiService
         $track = json_decode($result->getBody()->getContents(), true);
 
         return Song::fromSpotifyApi($track);
+    }
+
+    public function recreatePlaylist(Playlist $playlist)
+    {
+        $user = $this->checkRefresh($playlist->getUser());
+        $this->checkRefresh($user);
+
+        /** @var Song[] | Collection $songs */
+        $songs = Song::where(['playlist_id' => $playlist->getId()])->orderBy('priority')->get();
+        $uris = $songs->pluck('spotify_uri');
+
+        $uriLimit = 100;
+        $uriChunks = $uris->chunk($uriLimit);
+
+        /** @var Collection | Song[] $firstChunk */
+        $firstChunk = $uriChunks->shift() ?? [];
+
+        $this->spotifyApi->put('playlists/' . $playlist->getSpotifyPlaylistId() . '/tracks', [
+            'headers' => [
+                'Authorization'     => 'Bearer ' . $user->getAccessToken(),
+                'Content-Type'     => 'application/json',
+            ],
+            RequestOptions::JSON => [
+                'uris' => $firstChunk->values(),
+            ]
+        ]);
+
+        /** @var Collection | Song[] $chunk */
+        foreach ($uriChunks as $chunk) {
+            $this->spotifyApi->post('playlists/' . $playlist->getSpotifyPlaylistId() . '/tracks', [
+                'headers' => [
+                    'Authorization'     => 'Bearer ' . $user->getAccessToken(),
+                    'Content-Type'     => 'application/json',
+                ],
+                RequestOptions::JSON => [
+                    'uris' => $chunk->values(),
+                ]
+            ]);
+        }
     }
 }

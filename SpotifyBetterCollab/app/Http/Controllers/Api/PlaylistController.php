@@ -11,11 +11,19 @@ use App\Models\User;
 use App\Services\SpotifyApiService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Collection;
+use function array_pop;
+use function array_shift;
+use function array_values;
 use function is_numeric;
 use function preg_replace;
 use function print_r;
+use function rand;
 use function response;
+use function shuffle;
+use function sizeof;
 use function var_dump;
+use const PHP_EOL;
 
 class PlaylistController extends Controller
 {
@@ -64,7 +72,7 @@ class PlaylistController extends Controller
             return response('Logged in user / contributor miss-match', 403);
 
         /** @var Playlist $playlist */
-        $playlist = Playlist::with([])->find($contributor->getPlaylistId());
+        $playlist = Playlist::with(['songs'])->find($contributor->getPlaylistId());
 
         if ($contributor->getSongs()->count() >= $playlist->getSongLimit())
             return response('You\'ve already added the max amount of songs', 400);
@@ -73,6 +81,7 @@ class PlaylistController extends Controller
         if($api->addSongToPlaylist($playlist, $song)) {
             $song->setPlaylistId($playlist->getId())
                 ->setContributorId($contributor->getId())
+                ->setPriority($playlist->getSongs()->count())
                 ->save();
 
             $song = Song::find($song->getId());
@@ -83,17 +92,75 @@ class PlaylistController extends Controller
         }
     }
 
+    public function postDeleteSong(Song $song)
+    {
+        $api = new SpotifyApiService();
+        $user = User::fromSession();
+
+        /** @var Contributor $contributor */
+        $contributor = Contributor::find($song->getContributorId());
+
+        if ($user->getId() != $contributor->getUserId())
+            return response('Logged in user / contributor miss-match', 403);
+
+        $song->delete();
+
+        /** @var Playlist $playlist */
+        $playlist = Playlist::with(['user', 'songs'])->find($contributor->getPlaylistId());
+        $api->recreatePlaylist($playlist);
+        $playlist = Playlist::find($playlist->getId());
+        return response()->json($playlist);
+    }
+
     public function postPlaylistSettings(Request $request, Playlist $playlist)
     {
         $songLimit = $request->get('songLimit', $playlist->getSongLimit());
         $user = User::fromSession();
 
         if ($user->getId() != $playlist->getUserId())
-            return response('Logged in user / playlist miss-match', 403);
+            return response('Logged in user / playlist miss-match', 401);
 
         $playlist->setSongLimit($songLimit)
             ->save();
 
+        return response()->json($playlist);
+    }
+
+    public function postShuffle(Playlist $playlist)
+    {
+        $api = new SpotifyApiService();
+        $user = User::fromSession();
+
+        if ($user->getId() != $playlist->getUserId())
+            return response('Not the owner of the playlist', 401);
+
+
+        /** @var Contributor[] | Collection $contributors */
+        $contributors = $playlist->getContributors()->shuffle();
+        $songsByContributor = [];
+
+        foreach ($contributors as $contributor) {
+            $songsByContributor[] = $contributor->getSongs()->shuffle();
+        }
+
+        $priority = 0;
+        $songsLeft = true;
+
+        while ($songsLeft) {
+            $songsLeft = false;
+
+            /** @var Song[] | Collection $songs */
+            foreach ($songsByContributor as $songs) {
+                if ($songs->count() > 0) {
+                    $song = $songs->pop();
+                    $song->setPriority($priority++)->save();
+                    $songsLeft = true;
+                }
+            }
+        }
+
+        $playlist = Playlist::find($playlist->getId());
+        $api->recreatePlaylist($playlist);
         return response()->json($playlist);
     }
 }

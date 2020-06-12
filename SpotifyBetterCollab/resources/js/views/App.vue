@@ -1,18 +1,19 @@
 <template>
-    <div>
+    <div id="container" class="flex flex-align-items-stretch flex-direction-column overflow-hidden">
         <div>
-            <div class="flex flex--align-center bg--color-sky-blue  text--color-black header">
+            <div class="flex flex-space-between flex-vertical-center bg--color-sky-blue text--color-black padding--1">
                 <div class="title">
                     List Together For Spotify
                 </div>
-                <div class="flex--grow-1 ">
-
-                </div>
                 <div v-if="!user">
                     <a href="/login">
-                        <div class="login-button bg--color-black flex flex--align-center">
-                            <img src="img/spotify_icon.png">
-                            <span class="login-button-text">Login</span>
+                        <div class="login-button bg--color-black flex">
+                            <div class="flex">
+                                <img src="img/spotify_icon.png">
+                            </div>
+                            <div class="login-button-text flex-grow-1">
+                                Login
+                            </div>
                         </div>
                     </a>
                 </div>
@@ -31,17 +32,28 @@
                 </div>
             </div>
         </div>
-        <main>
+        <main class="flex flex-horizontal-center text--color-lighter-grey flex--width-100 flex-align-items-stretch overflow-hidden">
+            <loading-overlay></loading-overlay>
             <div v-if="loadingUser">Loading...</div>
-            <router-view v-else></router-view>
+            <div v-else class="flex flex-horizontal-center text--color-lighter-grey flex--width-100">
+                <div id="sidebar" class="flex flex--width-20  bg--color-black">
+                    <sidebar></sidebar>
+                </div>
+                <div id="content" class="flex flex--grow-1 bg--color-dark-grey overflow-auto">
+                    <playlist></playlist>
+                </div>
+            </div>
         </main>
     </div>
 </template>
 <script>
     import { mapState } from 'vuex'
     import UserProfile from "../components/UserProfile";
+    import Sidebar from "./Sidebar";
+    import Playlist from "./Playlist";
+    import LoadingOverlay from "../components/LoadingOverlay";
     export default {
-        components: {UserProfile},
+        components: {LoadingOverlay, Playlist, Sidebar, UserProfile},
         computed: mapState([
             'user',
             'loadingUser',
@@ -59,6 +71,9 @@
     }
 </script>
 <style scoped>
+    #container, main {
+        height: 100%;
+    }
     .profile-pic {
         border-radius: 50%;
         height:50px;
@@ -68,30 +83,38 @@
     .title {
         font-size: 2rem;
         font-weight: bold;
-    }
-    .header {
-        padding: 1%;
+        margin: auto 0;
     }
     .header div {
         text-align: center;
         vertical-align: middle;
     }
     .login-button img {
-        height: 50px;
-        width: 50px;
+        height: 30px;
+        width: 30px;
     }
     .login-button {
         color: white;
-        padding: 5%;
-        width: 150px;
+        padding: 10px;
+        border-radius: 45px;
     }
     .login-button-text {
-        margin-left: 25px;
+        margin: auto 0;
         text-align: center;
-        vertical-align: middle;
+        font-size: 1.1rem;
+        padding: 0 10px;
+        font-weight: bold;
+    }
+    #sidebar {
+        max-width: 200px;
+    }
+    .overflow-auto {
+        overflow: auto;
+    }
+    .overflow-hidden {
+        overflow: hidden;
     }
     main {
-        max-width: 800px;
-        margin: 0 auto;
+        position: relative;
     }
 </style>

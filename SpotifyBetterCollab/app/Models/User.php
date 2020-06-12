@@ -13,6 +13,19 @@ class User extends Model
     protected $table = 'user';
     protected $primaryKey = 'id';
     protected $fillable = ['spotify_id', 'access_token', 'expires', 'refresh_token', 'name', 'profile_pic'];
+    protected $hidden = ['access_token', 'refresh_token', 'expires'];
+
+    public function playlists()
+    {
+        return $this->hasManyThrough(
+            'App\Models\Playlist',
+            'App\Models\Contributor',
+            'user_id',
+            'id',
+            'id',
+            'playlist_id'
+        );
+    }
 
     public function saveToSession()
     {

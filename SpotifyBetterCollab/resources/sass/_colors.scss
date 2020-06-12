@@ -4,6 +4,11 @@ $periwinkle: #d1cfe2;
 // $black: #001021;
 $black: #191414;
 $warmblack: #034748;
+$darkGrey: #212121;
+$grey: #373737;
+$lightGrey: #535353;
+$lighterGrey: #b3b3b3;
+$white: #F9F5FF;
 
 .bg--color-sky-blue {
     background-color: $skyBlue;
@@ -17,8 +22,23 @@ $warmblack: #034748;
 .bg--color-black {
     background-color: $black;
 }
+.bg--color-white {
+    background-color: $white;
+}
 .bg--color-warm-black {
     background-color: $warmblack;
+}
+.bg--color-dark-grey {
+    background-color: $darkGrey;
+}
+.bg--color-grey {
+    background-color: $grey;
+}
+.bg--color-light-grey {
+    background-color: $lightGrey;
+}
+.bg--color-lighter-grey {
+    background-color: $lighterGrey;
 }
 .text--color-sky-blue {
     color: $skyBlue;
@@ -34,4 +54,19 @@ $warmblack: #034748;
 }
 .text--color-warm-black {
     color: $warmblack;
+}
+.text--color-dark-grey {
+    color: $darkGrey;
+}
+.text--color-light-grey {
+    color: $lightGrey;
+}
+.text--color-lighter-grey {
+    color: $lighterGrey;
+}
+.text--color-white {
+    color: $white;
+}
+input {
+    color: $lighterGrey;
 }

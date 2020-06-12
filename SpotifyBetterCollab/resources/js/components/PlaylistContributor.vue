@@ -5,13 +5,18 @@
         <div v-if="songAddResult.show" :class="[songAddResult.class]">
             {{ this.songAddResult.message }}
         </div>
-        <song v-for="song in songs"
-              :song="song"
-              :key="song.id"></song>
+        <div class="song-list">
+            <div v-for="song in songs"
+                 :key="song.id">
+                <song :song="song"></song>
+                <button v-on:click="deleteSong(song)">Delete</button>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
+    import axios from "axios"
     import SongAdder from "./SongAdder";
     import Song from "./Song";
     import UserProfile from "./UserProfile";
@@ -61,6 +66,13 @@
                         setTimeout(this.hideSongResult, 3000)
                     });
             },
+            deleteSong (song) {
+                axios
+                    .post('/api/playlist/song/' + song.id + '/delete')
+                    .then(response => {
+                        this.$emit('update-playlist', response.data)
+                    })
+            },
             hideSongResult () {
                 this.songAddResult.show = false
             }
@@ -74,5 +86,9 @@
     }
     .success-message {
         color: green;
+    }
+    .song-list {
+        height: 200px;
+        overflow: scroll;
     }
 </style>

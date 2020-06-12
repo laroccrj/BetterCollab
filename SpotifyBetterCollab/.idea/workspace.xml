@@ -2,9 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e10103b0-46fc-4ef6-bbec-3085329cc616" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/reset.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/CreatePlaylist.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/LoadingOverlay.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/views/Sidebar.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/sass/font-size.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/db737bcc-eec9-4fb9-8e8a-751d3e9293ce.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/db737bcc-eec9-4fb9-8e8a-751d3e9293ce.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/PlaylistController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/PlaylistController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Playlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Playlist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Song.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Song.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/SpotifyApiService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/SpotifyApiService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_07_205828_add_song_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_07_205828_add_song_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/PlaylistAdminControls.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/PlaylistAdminControls.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/PlaylistContributor.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/PlaylistContributor.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Song.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Song.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/SongAdder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SongAdder.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/SongSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SongSearch.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/UserProfile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/UserProfile.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/Playlist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/Playlist.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/_colors.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/_colors.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/_flex.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/_flex.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,7 +46,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable />
@@ -163,16 +197,16 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/js/components" />
-      <recent name="$PROJECT_DIR$/resources/sass" />
-      <recent name="$PROJECT_DIR$/app/Http/Controllers" />
-      <recent name="$PROJECT_DIR$/app/Models" />
-      <recent name="$PROJECT_DIR$/app/Http/Controllers/Api" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/Services" />
       <recent name="$PROJECT_DIR$/resources/js" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/js/components" />
+      <recent name="$PROJECT_DIR$/resources/js/views" />
+      <recent name="$PROJECT_DIR$/resources/sass" />
+      <recent name="$PROJECT_DIR$/app/Http/Controllers" />
+      <recent name="$PROJECT_DIR$/app/Models" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -200,17 +234,12 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@316df614" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@3fc0d55" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@316df614" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@385590b1" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@316df614" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@2fd422eb" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@3fc0d55" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@6d292a8" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -228,7 +257,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1591491752371</updated>
-      <workItem from="1591491753612" duration="58940000" />
+      <workItem from="1591491753612" duration="106652000" />
+      <workItem from="1591885030832" duration="8040000" />
     </task>
     <servers />
   </component>
@@ -240,7 +270,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

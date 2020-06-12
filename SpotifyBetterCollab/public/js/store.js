@@ -16278,15 +16278,31 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
 var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
   state: {
     loadingUser: true,
-    user: null
+    user: null,
+    playlistId: null,
+    loadingOverlay: false
   },
   mutations: {
     setUser: function setUser(state, user) {
       state.user = user;
+
+      if (user.playlists.length > 0) {
+        state.playlistId = user.playlists[0].id;
+      }
+
       state.loadingUser = false;
     },
     setLoadingUser: function setLoadingUser(state, loading) {
       state.loadingUser = state;
+    },
+    setPlaylistId: function setPlaylistId(state, id) {
+      state.playlistId = id;
+    },
+    addPlaylist: function addPlaylist(state, playlist) {
+      state.user.playlists.push(playlist);
+    },
+    setLoadingOverlay: function setLoadingOverlay(state, loading) {
+      state.loadingOverlay = loading;
     }
   },
   actions: {

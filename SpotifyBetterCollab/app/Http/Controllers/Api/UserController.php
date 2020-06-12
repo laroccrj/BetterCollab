@@ -19,10 +19,11 @@ class UserController extends Controller
         $user = User::fromSession();
 
         if ($user) {
+            $user = User::with(['playlists'])->find($user->getId());
             $profile = $spotify->getProfile($user);
 
             $user->setName($profile['display_name'])
-                ->setProfilePic($profile['images'][0]['url'] ?? '/no-profile-pic')
+                ->setProfilePic($profile['images'][0]['url'] ?? '/img/default.png')
                 ->save();
         }
 

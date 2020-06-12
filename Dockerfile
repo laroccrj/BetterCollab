@@ -3,6 +3,7 @@ COPY ./SpotifyBetterCollab /var/www/html/
 EXPOSE 80
 RUN apt-get update && apt-get install -y libmcrypt-dev \
 	&& apt-get install libzip-dev -y \
+	&& apt-get install nodejs -y \
 	&& apt-get install npm -y \
 	&& docker-php-ext-install zip \
 	&& docker-php-ext-install mysqli \

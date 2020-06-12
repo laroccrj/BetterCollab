@@ -12,7 +12,19 @@ class Song extends Model
 {
     protected $table = 'song';
     protected $primaryKey = 'id';
-    protected $fillable = ['playlist_id','contributor_id', 'spotify_id', 'spotify_uri','title', 'artist', 'album_art','album'];
+
+    protected $fillable = [
+        'playlist_id',
+        'contributor_id',
+        'spotify_id',
+        'spotify_uri',
+        'title',
+        'artist',
+        'album_art',
+        'album',
+        'priority'
+    ];
+
     /**
      *@deprecated Use getUser instead
      */
@@ -200,6 +212,24 @@ class Song extends Model
     public function setAlbum(string $album): Song
     {
         $this->album = $album;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPriority(): int
+    {
+        return $this->priority;
+    }
+
+    /**
+     * @param int $priority
+     * @return Song
+     */
+    public function setPriority(int $priority): Song
+    {
+        $this->priority = $priority;
         return $this;
     }
 }

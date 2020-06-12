@@ -7,6 +7,13 @@
     <meta name="csrf-token" content="{{csrf_token()}}">
     <title>Spotify Better Collab</title>
     <link href=" {{ mix('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/reset.css') }}" />
+    <style>
+        html, body, #app {
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
 <div id="app">
@@ -14,5 +21,6 @@
 </div>
 <script src="{{ mix('js/bootstrap.js') }}"></script>
 <script src="{{ mix('js/app.js') }}"></script>
+<script src="https://kit.fontawesome.com/31c8262794.js" crossorigin="anonymous"></script>
 </body>
 </html>

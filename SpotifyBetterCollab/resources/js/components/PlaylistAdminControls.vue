@@ -1,7 +1,6 @@
 <template>
     <div>
-        <div>Songs per user: <input v-model="songLimit" type="number"></div>
-        <div><button v-on:click="saveSettings">Save</button></div>
+        <div>Songs per user: <input @blur="saveSettings" v-model="songLimit" type="number"></div>
     </div>
 </template>
 
@@ -30,5 +29,8 @@
 </script>
 
 <style scoped>
-
+    input[type="number"] {
+        width:50px;
+        text-align: right;
+    }
 </style>
