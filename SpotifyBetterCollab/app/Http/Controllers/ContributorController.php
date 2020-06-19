@@ -30,10 +30,12 @@ class ContributorController extends Controller
         $user = User::fromSession();
 
         if ($user) {
-            $contributor = new Contributor();
-            $contributor->setPlaylistId($playlist->getId())
-                ->setUserId($user->getId())
-                ->save();
+            if ($playlist->getContributorByUserId($user->getId()) === null) {
+                $contributor = new Contributor();
+                $contributor->setPlaylistId($playlist->getId())
+                    ->setUserId($user->getId())
+                    ->save();
+            }
 
             return Redirect::to('/playlist/' . $playlist->getId());
         } else {

@@ -10,6 +10,7 @@ const store = new Vuex.Store({
         user: null,
         playlistId: null,
         loadingOverlay: false,
+        songSearchCache: null,
     },
     mutations: {
         setUser (state, user) {
@@ -33,6 +34,9 @@ const store = new Vuex.Store({
         setLoadingOverlay(state, loading) {
             state.loadingOverlay = loading
         },
+        setSongSearchCache(state, songs) {
+            state.songSearchCache = songs
+        }
     },
     actions: {
         async getUser (store) {

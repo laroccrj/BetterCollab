@@ -5,7 +5,7 @@
             <img src="/img/title.png">
         </div>
         <a href="/logout">
-            <div class="logout font-size--large padding--5 create-playlist padding-left-10">
+            <div class="logout text--color-white font-size--large padding--5 create-playlist padding-left-10">
                 Logout
             </div>
         </a>

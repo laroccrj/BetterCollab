@@ -1,5 +1,25 @@
+$break-small: 500px;
+
 .flex {
     display: flex;
+
+    .hide-mobile {
+        @media screen and (max-width: $break-small) {
+            display: none;
+        }
+    }
+
+    .show-mobile {
+        @media screen and (max-width: $break-small) {
+            display: flex;
+        }
+    }
+
+    .mobile-direction-column {
+        @media screen and (max-width: $break-small) {
+            flex-direction: column;
+        }
+    }
 
     .flex--width-4 {
         width: 4%;
@@ -110,6 +130,10 @@
     padding-left: 10%;
 }
 
+.padding-10px {
+    padding: 10px;
+}
+
 .padding-left-10px {
     padding-left: 10px;
 }
@@ -122,4 +146,8 @@
 .icon-button:hover {
     cursor: pointer;
     color: #F9F5FF;
+}
+
+.max-width-200px {
+    max-width: 200px;
 }

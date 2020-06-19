@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-vertical-center">
-        <div class="flex--width-35">
+        <div class="flex--width-90">
             <input type="text"
                    v-model="query"
                    @keyup.enter="search"
@@ -25,9 +25,6 @@
                 items: []
             }
         },
-        mounted () {
-            this.search()
-        },
         methods: {
             async search () {
                 this.setLoading(true)
@@ -36,6 +33,7 @@
                     .then(response => (this.items = response.data))
 
                 this.$emit('input', this.items);
+                this.$store.commit('setSongSearchCache', this.items)
                 this.setLoading(false)
             },
             setLoading(loading) {

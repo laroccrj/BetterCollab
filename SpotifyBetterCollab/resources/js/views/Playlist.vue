@@ -31,7 +31,7 @@
         </div>
         <div class="tabs flex flex-align-items-stretch">
             <div @click="songsTab"
-                :class="[songsTabSel ? 'tab-selected' : '', 'all-tab', 'tab', 'flex', 'flex-vertical-center', 'flex-horizontal-center', 'font-size--large']">
+                :class="[songsTabSel && !contributor ? 'tab-selected' : '', 'all-tab', 'tab', 'flex', 'flex-vertical-center', 'flex-horizontal-center', 'font-size--large']">
                 <i class="fas fa-music"></i>
             </div>
             <div @click="addTab"
@@ -50,6 +50,7 @@
         <div class="body bg--color-grey padding--1">
             <div v-if="songsTabSel">
                 <song v-for="song in songs"
+                      v-if="!contributor || song.contributor_id == contributor.id"
                       :key="song.id"
                       :song="song">
                     <div v-if="song.contributor_id == userContributor.id"
@@ -63,6 +64,7 @@
             <song-adder v-else-if="addTabSel"
                 :playlist="playlist"
                 :current-songs="songs"
+                :song-slots-remaining="songSlotsRemaining"
                 @add-song="addSong"
                 @setLoading="setLoading">
             </song-adder>
@@ -134,6 +136,9 @@
                 songs.sort(function(a, b){return a.priority - b.priority})
                 return songs
             },
+            songSlotsRemaining: function () {
+                return this.playlist.song_limit - this.userContributor.songs.length
+            },
             ...mapState({
                 globalUser: 'user',
                 playlistId : 'playlistId'
@@ -199,6 +204,8 @@
                 this.songsTabSel = false
             },
             setContributor(contributor) {
+                this.songsTabSel = true
+                this.addTabSel = false
                 this.contributor = contributor
             },
             async addSong(song) {

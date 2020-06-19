@@ -1,9 +1,11 @@
 <template>
     <div id="container" class="flex flex-align-items-stretch flex-direction-column overflow-hidden">
-        <main class="flex flex-horizontal-center text--color-lighter-grey flex--width-100 flex-align-items-stretch overflow-hidden">
-            <div v-if="loadingUser">Loading...</div>
-            <div id="sidebar" class="flex flex--width-20  bg--color-black">
+        <main class="flex flex-horizontal-center text--color-lighter-grey flex--width-100 flex-align-items-stretch mobile-direction-column overflow-hidden">
+            <div id="sidebar" class="flex max-width-200px flex--width-20 bg--color-black hide-mobile">
                 <sidebar></sidebar>
+            </div>
+            <div id="mobile-sidebar" class="show-mobile">
+                <mobile-sidebar></mobile-sidebar>
             </div>
             <div id="content" class="flex flex--grow-1 bg--color-dark-grey overflow-auto">
                 <loading-overlay></loading-overlay>
@@ -18,8 +20,9 @@
     import Sidebar from "./Sidebar";
     import Playlist from "./Playlist";
     import LoadingOverlay from "../components/LoadingOverlay";
+    import MobileSidebar from "./MobileSidebar";
     export default {
-        components: {LoadingOverlay, Playlist, Sidebar, UserProfile},
+        components: {MobileSidebar, LoadingOverlay, Playlist, Sidebar, UserProfile},
         computed: mapState([
             'user',
             'loadingUser',
@@ -71,9 +74,6 @@
         padding: 0 10px;
         font-weight: bold;
     }
-    #sidebar {
-        max-width: 200px;
-    }
     .overflow-auto {
         overflow: auto;
     }
@@ -85,5 +85,13 @@
     }
     #content {
         position: relative;
+    }
+    #mobile-sidebar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 10;
+        background: transparent;
     }
 </style>

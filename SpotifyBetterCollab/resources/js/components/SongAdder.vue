@@ -1,6 +1,12 @@
 <template>
     <div>
-        <song-search v-model="songs" @setLoading="setLoading"></song-search>
+        <div class="flex flex--width-100 flex-space-between">
+            <song-search v-model="songs"
+                         @setLoading="setLoading"
+                         ref="search"
+                         class="flex--width-45 padding-left-10px"></song-search>
+            <div>You have <span class="text--color-sky-blue">{{songSlotsRemaining}}</span> songs to add!</div>
+        </div>
         <div v-if="showResults"
              v-for="song in songs"
              :key="song.id">
@@ -24,25 +30,32 @@
     import SongSearch from "./SongSearch";
     import Song from "./Song";
     import UserProfile from "./UserProfile";
+    import { mapState } from 'vuex'
     export default {
         name: "SongAdder",
         components: {UserProfile, Song, SongSearch},
         props: [
             'playlist',
-            'currentSongs'
+            'currentSongs',
+            'songSlotsRemaining'
         ],
         data() {
             return {
                 songs: [],
-                showResults: false,
             }
         },
-        watch: {
-            songs: function () {
-                this.showResults = true
-            }
+        mounted () {
+            const cacheSongs = this.$store.state.songSearchCache
+
+            if (cacheSongs != null)
+                this.songs = cacheSongs
+            else
+                this.$refs['search'].search()
         },
         computed: {
+            showResults () {
+                return this.songs.length > 0
+            },
             playlistSongsBySpotifyId () {
                 let songsBySpotifyId = {}
                 this.currentSongs.forEach(song => {
@@ -57,6 +70,9 @@
                 })
                 return contributorsById
             },
+            ...mapState({
+                songCache : 'songSearchCache'
+            })
         },
         methods: {
             addSong(song) {

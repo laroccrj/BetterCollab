@@ -16280,7 +16280,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     loadingUser: true,
     user: null,
     playlistId: null,
-    loadingOverlay: false
+    loadingOverlay: false,
+    songSearchCache: null
   },
   mutations: {
     setUser: function setUser(state, user) {
@@ -16303,6 +16304,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     },
     setLoadingOverlay: function setLoadingOverlay(state, loading) {
       state.loadingOverlay = loading;
+    },
+    setSongSearchCache: function setSongSearchCache(state, songs) {
+      state.songSearchCache = songs;
     }
   },
   actions: {

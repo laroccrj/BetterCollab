@@ -2,6 +2,24 @@
   display: flex;
 }
 
+@media screen and (max-width: 500px) {
+  .flex .hide-mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .flex .show-mobile {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .flex .mobile-direction-column {
+    flex-direction: column;
+  }
+}
+
 .flex .flex--width-4 {
   width: 4%;
 }
@@ -110,6 +128,10 @@
   padding-left: 10%;
 }
 
+.padding-10px {
+  padding: 10px;
+}
+
 .padding-left-10px {
   padding-left: 10px;
 }
@@ -125,6 +147,10 @@
 .icon-button:hover {
   cursor: pointer;
   color: #F9F5FF;
+}
+
+.max-width-200px {
+  max-width: 200px;
 }
 
 .bg--color-sky-blue {
