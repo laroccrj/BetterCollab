@@ -40,7 +40,7 @@ class SpotifyLoginController extends Controller
         $code = $request->get('code');
         $api = new SpotifyApiService();
 
-        $response = $api->getOAuthTokens($code, 'http://localhost/spotify/callback');
+        $response = $api->getOAuthTokens($code, '/spotify/callback');
         $accessToken = $response['access_token'];
         $expires = $response['expires_in'] + time();
         $refreshToken = $response['refresh_token'];

@@ -21,6 +21,7 @@ class SpotifyApiService
     private $clientId;
     private $clientSecret;
     private $clientBearer;
+    private $appUrl;
 
     protected $spotifyApi;
 
@@ -31,6 +32,7 @@ class SpotifyApiService
     {
         $this->clientId = env('SPOTIFY_API_CLIENT_ID', false);
         $this->clientSecret = env('SPOTIFY_API_CLIENT_SECRET', false);
+        $this->appUrl = env('APP_URL', 'localhost');
         $this->spotifyApi = new Client(['base_uri' => 'https://api.spotify.com/v1/']);
         $this->spotifyAccountApi = new Client(['base_uri' => 'https://accounts.spotify.com/api/']);
         $this->clientBearer = base64_encode($this->clientId . ':' . $this->clientSecret);
@@ -64,12 +66,12 @@ class SpotifyApiService
         return $user;
     }
 
-    public function getOAuthTokens($code, $redirectUrl) {
+    public function getOAuthTokens($code, $redirectUri) {
         $result = $this->spotifyAccountApi->post('token', [
             'form_params' => [
                 'grant_type' => 'authorization_code',
                 'code' => $code,
-                'redirect_uri' => $redirectUrl,
+                'redirect_uri' => $this->appUrl . $redirectUri,
                 'client_id' => $this->clientId,
                 'client_secret' => $this->clientSecret,
             ]

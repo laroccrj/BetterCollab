@@ -56,7 +56,7 @@ class ContributorController extends Controller
         $code = $request->get('code');
         $api = new SpotifyApiService();
 
-        $response = $api->getOAuthTokens($code, 'http://localhost/collab/callback');
+        $response = $api->getOAuthTokens($code, '/collab/callback');
         $accessToken = $response['access_token'];
         $expires = $response['expires_in'] + time();
         $refreshToken = $response['refresh_token'];
