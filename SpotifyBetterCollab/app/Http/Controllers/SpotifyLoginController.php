@@ -7,6 +7,7 @@ use App\Services\SpotifyApiService;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use function env;
 use function json_decode;
 use function time;
 use function urlencode;
@@ -17,12 +18,14 @@ class SpotifyLoginController extends Controller
 
     public function login()
     {
+        $appUrl = env('APP_URL', null);
+
         return Redirect::to(
             'https://accounts.spotify.com/authorize'
             . '?response_type=code'
             . '&client_id=' . '6575ff02122e4769a7e1b06a11727bbc'
             . '&scope=' . urlencode('playlist-modify-public playlist-modify-private')
-            . '&redirect_uri=' . urlencode('http://localhost/spotify/callback')
+            . '&redirect_uri=' . urlencode($appUrl. '/spotify/callback')
         );
     }
 

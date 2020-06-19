@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e10103b0-46fc-4ef6-bbec-3085329cc616" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/views/MobileSidebar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContributorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContributorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/SongAdder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SongAdder.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/SongSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SongSearch.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/Playlist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/Playlist.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/Sidebar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/_flex.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/_flex.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SpotifyLoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SpotifyLoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/SpotifyApiService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/SpotifyApiService.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -234,7 +224,7 @@
       <option name="presentableId" value="Default" />
       <updated>1591491752371</updated>
       <workItem from="1591491753612" duration="106652000" />
-      <workItem from="1591885030832" duration="20420000" />
+      <workItem from="1591885030832" duration="21055000" />
     </task>
     <servers />
   </component>

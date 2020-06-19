@@ -32,7 +32,7 @@ class SpotifyApiService
     {
         $this->clientId = env('SPOTIFY_API_CLIENT_ID', false);
         $this->clientSecret = env('SPOTIFY_API_CLIENT_SECRET', false);
-        $this->appUrl = env('APP_URL', 'localhost');
+        $this->appUrl = env('APP_URL', null);
         $this->spotifyApi = new Client(['base_uri' => 'https://api.spotify.com/v1/']);
         $this->spotifyAccountApi = new Client(['base_uri' => 'https://accounts.spotify.com/api/']);
         $this->clientBearer = base64_encode($this->clientId . ':' . $this->clientSecret);
