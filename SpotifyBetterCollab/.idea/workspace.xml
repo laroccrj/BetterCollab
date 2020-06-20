@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e10103b0-46fc-4ef6-bbec-3085329cc616" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SpotifyLoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SpotifyLoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/SpotifyApiService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/SpotifyApiService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContributorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContributorController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -224,7 +223,7 @@
       <option name="presentableId" value="Default" />
       <updated>1591491752371</updated>
       <workItem from="1591491753612" duration="106652000" />
-      <workItem from="1591885030832" duration="21055000" />
+      <workItem from="1591885030832" duration="21373000" />
     </task>
     <servers />
   </component>

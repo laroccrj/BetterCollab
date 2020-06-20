@@ -9,6 +9,7 @@ use App\Services\SpotifyApiService;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use function env;
 use function json_decode;
 use function response;
 use function time;
@@ -39,12 +40,14 @@ class ContributorController extends Controller
 
             return Redirect::to('/playlist/' . $playlist->getId());
         } else {
+
+            $appUrl = env('APP_URL', null);
             return Redirect::to(
                 'https://accounts.spotify.com/authorize'
                 . '?response_type=code'
                 . '&client_id=' . '6575ff02122e4769a7e1b06a11727bbc'
                 . '&scope=' . urlencode('playlist-modify-public playlist-modify-private')
-                . '&redirect_uri=' . urlencode('http://localhost/collab/callback')
+                . '&redirect_uri=' . urlencode($appUrl . '/collab/callback')
                 . '&state=' . $collabHash
             );
         }
