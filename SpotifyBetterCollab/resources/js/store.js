@@ -16,14 +16,18 @@ const store = new Vuex.Store({
         setUser (state, user) {
             state.user = user
 
-            if (user.playlists.length > 0) {
-                state.playlistId = user.playlists[0].id
+            if (user) {
+                if (user.playlists.length > 0) {
+                    state.playlistId = user.playlists[0].id
+                }
             }
 
             state.loadingUser = false
+            state.loadingOverlay = false
         },
         setLoadingUser (state, loading) {
-            state.loadingUser = state
+            state.loadingUser = loading
+            state.loadingOverlay = loading
         },
         setPlaylistId(state, id) {
             state.playlistId = id

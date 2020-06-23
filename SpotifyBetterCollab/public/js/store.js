@@ -16287,14 +16287,18 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     setUser: function setUser(state, user) {
       state.user = user;
 
-      if (user.playlists.length > 0) {
-        state.playlistId = user.playlists[0].id;
+      if (user) {
+        if (user.playlists.length > 0) {
+          state.playlistId = user.playlists[0].id;
+        }
       }
 
       state.loadingUser = false;
+      state.loadingOverlay = false;
     },
     setLoadingUser: function setLoadingUser(state, loading) {
-      state.loadingUser = state;
+      state.loadingUser = loading;
+      state.loadingOverlay = loading;
     },
     setPlaylistId: function setPlaylistId(state, id) {
       state.playlistId = id;

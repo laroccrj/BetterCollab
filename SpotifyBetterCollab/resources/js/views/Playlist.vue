@@ -152,8 +152,10 @@
         methods: {
             async loadPlaylist() {
                 this.setLoading(true)
-                if (!this.playlistId)
+                if (!this.playlistId) {
+                    this.setLoading(false)
                     return
+                }
 
                 await axios
                     .get('/api/playlist/' + this.playlistId)

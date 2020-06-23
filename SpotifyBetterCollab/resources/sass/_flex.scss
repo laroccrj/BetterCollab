@@ -13,6 +13,9 @@ $break-small: 500px;
         @media screen and (max-width: $break-small) {
             display: flex;
         }
+        @media screen and (min-width: $break-small) {
+            display: none;
+        }
     }
 
     .mobile-direction-column {

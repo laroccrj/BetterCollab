@@ -4,22 +4,24 @@
         <div class="padding--5">
             <img src="/img/title.png">
         </div>
-        <a href="/logout">
-            <div class="logout text--color-white font-size--large padding--5 create-playlist padding-left-10">
-                Logout
-            </div>
-        </a>
-        <create-playlist class="padding-left-10"
-            @newPlaylist="newPlaylist">
-        </create-playlist>
-        <div v-for="playlist in playlists"
-             @click="selectPlaylist(playlist.id)"
-             :class="[
+        <div v-if="user">
+            <a href="/logout">
+                <div class="logout text--color-white font-size--large padding--5 create-playlist padding-left-10">
+                    Logout
+                </div>
+            </a>
+            <create-playlist class="padding-left-10"
+                             @newPlaylist="newPlaylist">
+            </create-playlist>
+            <div v-for="playlist in playlists"
+                 @click="selectPlaylist(playlist.id)"
+                 :class="[
                 'playlist',
                 isSelectPlaylist(playlist.id) ? 'playlist-selected text--color-white' : 'text--color-lighter-grey',
                 'padding-left-10'
             ]">
-            {{ playlist.name }}
+                {{ playlist.name }}
+            </div>
         </div>
     </div>
 </template>

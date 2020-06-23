@@ -9,7 +9,10 @@
             </div>
             <div id="content" class="flex flex--grow-1 bg--color-dark-grey overflow-auto">
                 <loading-overlay></loading-overlay>
-                <playlist></playlist>
+                <div v-if="!loadingUser" class="flex flex--grow-1 overflow-auto">
+                    <playlist v-if="user"></playlist>
+                    <welcome v-else></welcome>
+                </div>
             </div>
         </main>
     </div>
@@ -21,8 +24,9 @@
     import Playlist from "./Playlist";
     import LoadingOverlay from "../components/LoadingOverlay";
     import MobileSidebar from "./MobileSidebar";
+    import Welcome from "./Welcome";
     export default {
-        components: {MobileSidebar, LoadingOverlay, Playlist, Sidebar, UserProfile},
+        components: {Welcome, MobileSidebar, LoadingOverlay, Playlist, Sidebar, UserProfile},
         computed: mapState([
             'user',
             'loadingUser',
