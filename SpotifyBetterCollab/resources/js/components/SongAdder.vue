@@ -23,6 +23,9 @@
                 </div>
             </song>
         </div>
+        <div @click="loadMore" class="loadMore">
+            <i class="fas fa-plus"></i> Load more songs
+        </div>
     </div>
 </template>
 
@@ -86,11 +89,20 @@
             },
             setLoading(loading) {
                 this.$emit('setLoading', loading)
+            },
+            loadMore() {
+                this.$refs['search'].loadMore()
             }
         }
     }
 </script>
 
 <style scoped>
-
+    .loadMore {
+        padding:10px;
+    }
+    .loadMore:hover {
+        cursor: pointer;
+        background-color: #212121;
+    }
 </style>

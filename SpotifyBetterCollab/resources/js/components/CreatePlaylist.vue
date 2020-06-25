@@ -2,6 +2,7 @@
     <div>
         <input @blur="unfocusInput"
                @focusin="focusInput"
+               @keyup.enter="newPlaylist"
                ref="nameInput"
                type="text"
                class="input text--color-lighter-grey add"

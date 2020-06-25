@@ -59,6 +59,12 @@ class PlaylistController extends Controller
 
     public function getPlaylist(Playlist $playlist)
     {
+        $api = new SpotifyApiService();
+        $apiPlaylist = $api->getPlaylist($playlist);
+        $playlist->setName($apiPlaylist['name'])
+            ->setSpotifyUrl($apiPlaylist['external_urls']['spotify'])
+            ->save();
+
         return response()->json($playlist);
     }
 

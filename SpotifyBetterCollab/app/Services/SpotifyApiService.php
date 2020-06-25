@@ -92,6 +92,19 @@ class SpotifyApiService
         return json_decode($result->getBody()->getContents(), true);
     }
 
+    public function getPlaylist(Playlist $playlist)
+    {
+        $user = $this->checkRefresh($playlist->getUser());
+
+        $result = $this->spotifyApi->get('playlists/' . $playlist->getSpotifyPlaylistId(), [
+            'headers' => [
+                'Authorization'     => 'Bearer ' . $user->getAccessToken()
+            ]
+        ]);
+
+        return json_decode($result->getBody()->getContents(), true);
+    }
+
     /**
      * @param User $user
      * @param string $name

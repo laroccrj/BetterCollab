@@ -171,4 +171,22 @@ class Playlist extends Model
         $this->song_limit = $song_limit;
         return $this;
     }
+
+    /**
+    * @return string
+     */
+    public function getSpotifyUrl(): string
+    {
+        return $this->spotify_url;
+    }
+
+    /**
+     * @param string $spotify_url
+     * @return Playlist
+     */
+    public function setSpotifyUrl(string $spotify_url): Playlist
+    {
+        $this->spotify_url = $spotify_url;
+        return $this;
+    }
 }

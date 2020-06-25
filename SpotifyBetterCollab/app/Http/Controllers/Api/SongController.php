@@ -15,9 +15,10 @@ class SongController extends Controller
     public function getSearch(Request $request)
     {
         $query = $request->get("q");
+        $offset = $request->get("offset", 0);
         $user = User::fromSession();
         $api = new SpotifyApiService();
-        $result = $api->trackSearch($user, $query);
+        $result = $api->trackSearch($user, $query, $offset);
         return response()->json($result);
     }
 }

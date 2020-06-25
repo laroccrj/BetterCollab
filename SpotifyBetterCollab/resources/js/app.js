@@ -17,8 +17,6 @@ Vue.mixin({
 
 import App from './views/App'
 import Index from './views/Index'
-import Playlists from './views/Playlists'
-import Playlist from './views/Playlist'
 
 const router = new VueRouter({
     mode: 'history',
@@ -32,16 +30,6 @@ const router = new VueRouter({
             path: '/:id',
             name: 'home',
             component: Index
-        },
-        {
-            path: '/playlists',
-            name: 'playlists',
-            component: Playlists
-        },
-        {
-            path: '/playlist/:id',
-            name: 'playlist',
-            component: Playlist
         },
     ],
 });

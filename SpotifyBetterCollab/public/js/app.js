@@ -1944,6 +1944,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CreatePlaylist",
@@ -2292,6 +2293,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2346,6 +2350,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     setLoading: function setLoading(loading) {
       this.$emit('setLoading', loading);
+    },
+    loadMore: function loadMore() {
+      this.$refs['search'].loadMore();
     }
   }
 });
@@ -2394,7 +2401,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       query: '',
-      items: []
+      items: [],
+      offset: 0
     };
   },
   methods: {
@@ -2406,26 +2414,59 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                _this.offset = 0;
+
                 _this.setLoading(true);
 
-                _context.next = 3;
+                _context.next = 4;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/song/search?q=' + _this.query).then(function (response) {
                   return _this.items = response.data;
                 });
 
-              case 3:
+              case 4:
                 _this.$emit('input', _this.items);
 
                 _this.$store.commit('setSongSearchCache', _this.items);
 
                 _this.setLoading(false);
 
-              case 6:
+              case 7:
               case "end":
                 return _context.stop();
             }
           }
         }, _callee);
+      }))();
+    },
+    loadMore: function loadMore() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _this2.setLoading(true);
+
+                _this2.offset += 50;
+                _context2.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/song/search?q=' + _this2.query + '&offset=' + _this2.offset).then(function (response) {
+                  return _this2.items = _this2.items.concat(response.data);
+                });
+
+              case 4:
+                _this2.$emit('input', _this2.items);
+
+                _this2.$store.commit('setSongSearchCache', _this2.items);
+
+                _this2.setLoading(false);
+
+              case 7:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
       }))();
     },
     setLoading: function setLoading(loading) {
@@ -2714,6 +2755,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Song__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/Song */ "./resources/js/components/Song.vue");
 /* harmony import */ var _components_PlaylistContributor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/PlaylistContributor */ "./resources/js/components/PlaylistContributor.vue");
 /* harmony import */ var _components_PlaylistAdminControls__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/PlaylistAdminControls */ "./resources/js/components/PlaylistAdminControls.vue");
+/* harmony import */ var _components_CreatePlaylist__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/CreatePlaylist */ "./resources/js/components/CreatePlaylist.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2800,6 +2842,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -2811,6 +2873,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Playlist",
   components: {
+    CreatePlaylist: _components_CreatePlaylist__WEBPACK_IMPORTED_MODULE_9__["default"],
     PlaylistAdminControls: _components_PlaylistAdminControls__WEBPACK_IMPORTED_MODULE_8__["default"],
     PlaylistContributor: _components_PlaylistContributor__WEBPACK_IMPORTED_MODULE_7__["default"],
     Song: _components_Song__WEBPACK_IMPORTED_MODULE_6__["default"],
@@ -3061,98 +3124,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     setLoading: function setLoading(loading) {
       this.$store.commit('setLoadingOverlay', loading);
       this.loading = loading;
-    }
-  }
-});
+    },
+    newPlaylist: function newPlaylist(playlist) {
+      var _this6 = this;
 
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Playlists.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Playlists.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Playlists",
-  data: function data() {
-    return {
-      newPlaylistName: "",
-      playlists: {}
-    };
-  },
-  mounted: function mounted() {
-    this.loadPlaylists();
-  },
-  methods: {
-    newPlaylist: function newPlaylist() {
-      var _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context.prev = _context.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
-                _context.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/playlist/new', {
-                  name: _this.newPlaylistName
-                }).then(function (response) {
-                  return _this.playlists.push(response.data);
-                });
+                _this6.$store.commit('addPlaylist', playlist);
+
+                _this6.$store.commit('setPlaylistId', playlist.id);
 
               case 2:
               case "end":
-                return _context.stop();
+                return _context5.stop();
             }
           }
-        }, _callee);
-      }))();
-    },
-    loadPlaylists: function loadPlaylists() {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/playlist').then(function (response) {
-                  return _this2.playlists = response.data;
-                });
-
-              case 1:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
+        }, _callee5);
       }))();
     }
   }
@@ -3414,6 +3404,25 @@ exports.push([module.i, "\n.art[data-v-01ba4d00] {\n    padding-right: 10px;\n}\
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SongAdder.vue?vue&type=style&index=0&id=fb0932c4&scoped=true&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SongAdder.vue?vue&type=style&index=0&id=fb0932c4&scoped=true&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.loadMore[data-v-fb0932c4] {\n    padding:10px;\n}\n.loadMore[data-v-fb0932c4]:hover {\n    cursor: pointer;\n    background-color: #212121;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SongSearch.vue?vue&type=style&index=0&id=20358d70&scoped=true&lang=css&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SongSearch.vue?vue&type=style&index=0&id=20358d70&scoped=true&lang=css& ***!
@@ -3502,7 +3511,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.head[data-v-6dad4cf1] {\n    border-bottom: 5px solid #06bee1;\n}\n.body[data-v-6dad4cf1] {\n    height: 100%;\n    overflow:scroll;\n}\n.tag[data-v-6dad4cf1] {\n    padding: 1px;\n    color: #b3b3b3;\n    text-align: center;\n    vertical-align: middle;\n    font-size: .8rem;\n}\n.owner-options[data-v-6dad4cf1] {\n    margin-top: -10px;\n    margin-bottom: 10px;\n}\n.owner-options .tag[data-v-6dad4cf1]:hover {\n    cursor: pointer;\n}\n.underline[data-v-6dad4cf1] {\n    border-bottom: 1px solid #b3b3b3;\n}\n.tab[data-v-6dad4cf1] {\n    padding:10px;\n}\n.tab[data-v-6dad4cf1]:hover {\n    cursor: pointer;\n    color: #F9F5FF;\n}\n.all-tab[data-v-6dad4cf1] {\n    width: 20%;\n    max-width: 100px;\n    text-align: center;\n}\n.contributor-tabs[data-v-6dad4cf1] {\n    width: 100%;\n}\n.contributor-tab[data-v-6dad4cf1] {\n}\n.tab-selected[data-v-6dad4cf1] {\n    color:#F9F5FF;\n    background-color: #373737;\n}\n", ""]);
+exports.push([module.i, "\n.head[data-v-6dad4cf1] {\n    border-bottom: 5px solid #06bee1;\n}\n.body[data-v-6dad4cf1] {\n    height: 100%;\n    overflow:scroll;\n}\n.tag[data-v-6dad4cf1] {\n    padding: 1px;\n    color: #b3b3b3;\n    text-align: center;\n    vertical-align: middle;\n    font-size: .8rem;\n}\n.owner-options[data-v-6dad4cf1] {\n    margin-top: -10px;\n    margin-bottom: 10px;\n}\n.owner-options .tag[data-v-6dad4cf1]:hover {\n    cursor: pointer;\n}\n.underline[data-v-6dad4cf1] {\n    border-bottom: 1px solid #b3b3b3;\n}\n.tab[data-v-6dad4cf1] {\n    padding:10px;\n}\n.tab[data-v-6dad4cf1]:hover {\n    cursor: pointer;\n    color: #F9F5FF;\n}\n.all-tab[data-v-6dad4cf1] {\n    width: 20%;\n    max-width: 100px;\n    text-align: center;\n}\n.contributor-tabs[data-v-6dad4cf1] {\n    width: 100%;\n}\n.contributor-tab[data-v-6dad4cf1] {\n}\n.tab-selected[data-v-6dad4cf1] {\n    color:#F9F5FF;\n    background-color: #373737;\n}\n.spotifyIcon[data-v-6dad4cf1] {\n    max-width: 50px;\n    height:50px;\n    margin-right: 10px;\n}\n.spotifyIcon[data-v-6dad4cf1]:hover {\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -4917,6 +4926,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SongAdder.vue?vue&type=style&index=0&id=fb0932c4&scoped=true&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SongAdder.vue?vue&type=style&index=0&id=fb0932c4&scoped=true&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./SongAdder.vue?vue&type=style&index=0&id=fb0932c4&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SongAdder.vue?vue&type=style&index=0&id=fb0932c4&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SongSearch.vue?vue&type=style&index=0&id=20358d70&scoped=true&lang=css&":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SongSearch.vue?vue&type=style&index=0&id=20358d70&scoped=true&lang=css& ***!
@@ -5837,6 +5876,15 @@ var render = function() {
       on: {
         blur: _vm.unfocusInput,
         focusin: _vm.focusInput,
+        keyup: function($event) {
+          if (
+            !$event.type.indexOf("key") &&
+            _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+          ) {
+            return null
+          }
+          return _vm.newPlaylist($event)
+        },
         input: function($event) {
           if ($event.target.composing) {
             return
@@ -6187,7 +6235,12 @@ var render = function() {
               1
             )
           : _vm._e()
-      })
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "loadMore", on: { click: _vm.loadMore } }, [
+        _c("i", { staticClass: "fas fa-plus" }),
+        _vm._v(" Load more songs\n    ")
+      ])
     ],
     2
   )
@@ -6534,245 +6587,338 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.playlist
-    ? _c(
-        "div",
-        {
-          staticClass:
-            "flex--width-100 flex flex-align-items-stretch flex-direction-column"
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "head flex--width-100 bg--color-dark-grey padding--1"
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "text--color-sky-blue font-size--larger" },
-                [_vm._v(_vm._s(_vm.playlist.name))]
-              ),
-              _vm._v(" "),
-              _vm.isOwner
-                ? _c("div", { staticClass: "owner-options" }, [
-                    _c(
-                      "span",
-                      {
-                        class: [_vm.showSettings ? "underline" : "", "tag"],
-                        on: { click: _vm.toggleSettings }
-                      },
-                      [
-                        _c("i", { staticClass: "fas fa-cog" }),
-                        _vm._v(" Settings")
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        class: [_vm.showShareUrl ? "underline" : "", "tag"],
-                        on: { click: _vm.toggleShareUrl }
-                      },
-                      [
-                        _c("i", { staticClass: "fas fa-link" }),
-                        _vm._v(" Share Url")
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      { staticClass: "tag", on: { click: _vm.shuffle } },
-                      [
-                        _c("i", { staticClass: "fas fa-random" }),
-                        _vm._v(" Shuffle")
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _vm.showShareUrlCopied
-                      ? _c("span", { staticClass: "tag" }, [
-                          _c("span", { staticClass: "text--color-sky-blue " }, [
-                            _vm._v("Copied to clipboard")
-                          ])
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.showShareUrl
-                      ? _c("div", [
-                          _c("span", { staticClass: "tag" }, [
-                            _vm._v(_vm._s(_vm.collabLink))
-                          ])
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.showSettings
-                      ? _c(
-                          "div",
-                          [
-                            _vm.isOwner
-                              ? _c("playlist-admin-controls", {
-                                  attrs: { playlist: _vm.playlist },
-                                  on: { "playlist-update": _vm.updatePlaylist }
-                                })
-                              : _vm._e()
-                          ],
-                          1
-                        )
-                      : _vm._e()
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _c("div", { staticClass: "flex flex-vertical-center" }, [
-                _c("div", [
-                  _c("img", {
-                    staticStyle: {
-                      "border-radius": "50%",
-                      height: "50px",
-                      width: "50px"
-                    },
-                    attrs: { src: _vm.playlist.user.profile_pic }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "padding-left-10px" }, [
-                  _c(
-                    "div",
-                    { staticClass: "text--color-white font-size--large" },
-                    [_vm._v(_vm._s(_vm.playlist.user.name))]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(0)
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "tabs flex flex-align-items-stretch" }, [
+  return _c("div", { staticClass: "flex--width-100 flex" }, [
+    _vm.playlist
+      ? _c(
+          "div",
+          {
+            staticClass:
+              "flex--width-100 flex flex-align-items-stretch flex-direction-column"
+          },
+          [
             _c(
               "div",
               {
-                class: [
-                  _vm.songsTabSel && !_vm.contributor ? "tab-selected" : "",
-                  "all-tab",
-                  "tab",
-                  "flex",
-                  "flex-vertical-center",
-                  "flex-horizontal-center",
-                  "font-size--large"
-                ],
-                on: { click: _vm.songsTab }
+                staticClass:
+                  "head flex--width-100 bg--color-dark-grey padding--1"
               },
-              [_c("i", { staticClass: "fas fa-music" })]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                class: [
-                  _vm.addTabSel ? "tab-selected" : "",
-                  "all-tab",
-                  "tab",
-                  "flex",
-                  "flex-vertical-center",
-                  "flex-horizontal-center",
-                  "font-size--large"
-                ],
-                on: { click: _vm.addTab }
-              },
-              [_c("i", { staticClass: "fas fa-plus" })]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "flex contributor-tabs" },
-              _vm._l(_vm.contributors, function(contributor) {
-                return _c(
+              [
+                _c(
                   "div",
                   {
-                    class: [
-                      _vm.isContributorSelected(contributor)
-                        ? "tab-selected"
-                        : "",
-                      "contributor-tab",
-                      "tab"
-                    ],
-                    on: {
-                      click: function($event) {
-                        return _vm.setContributor(contributor)
-                      }
-                    }
+                    staticClass:
+                      "text--color-sky-blue font-size--larger flex flex-vertical-center"
                   },
                   [
-                    _c("user-profile", {
-                      attrs: {
-                        user: contributor.user,
-                        "show-name": _vm.isContributorSelected(contributor)
-                      }
-                    })
-                  ],
-                  1
-                )
-              }),
-              0
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "body bg--color-grey padding--1" },
-            [
-              _vm.songsTabSel
-                ? _c(
-                    "div",
-                    _vm._l(_vm.songs, function(song) {
-                      return !_vm.contributor ||
-                        song.contributor_id == _vm.contributor.id
+                    _c("div", [
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: _vm.playlist.spotify_url,
+                            target: "_blank"
+                          }
+                        },
+                        [
+                          _c("img", {
+                            staticClass: "spotifyIcon",
+                            attrs: { src: "/img/spotify_icon.png" }
+                          })
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [_vm._v(_vm._s(_vm.playlist.name))])
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.isOwner
+                  ? _c("div", { staticClass: "owner-options" }, [
+                      _c(
+                        "span",
+                        {
+                          class: [_vm.showSettings ? "underline" : "", "tag"],
+                          on: { click: _vm.toggleSettings }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-cog" }),
+                          _vm._v(" Settings")
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          class: [_vm.showShareUrl ? "underline" : "", "tag"],
+                          on: { click: _vm.toggleShareUrl }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-link" }),
+                          _vm._v(" Share Url")
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        { staticClass: "tag", on: { click: _vm.shuffle } },
+                        [
+                          _c("i", { staticClass: "fas fa-random" }),
+                          _vm._v(" Shuffle")
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.showShareUrlCopied
+                        ? _c("span", { staticClass: "tag" }, [
+                            _c(
+                              "span",
+                              { staticClass: "text--color-sky-blue " },
+                              [_vm._v("Copied to clipboard")]
+                            )
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.showShareUrl
+                        ? _c("div", [
+                            _c("span", { staticClass: "tag" }, [
+                              _vm._v(_vm._s(_vm.collabLink))
+                            ])
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.showSettings
                         ? _c(
-                            "song",
-                            { key: song.id, attrs: { song: song } },
+                            "div",
                             [
-                              song.contributor_id == _vm.userContributor.id
-                                ? _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "icon-button font-size--large flex flex-vertical-center flex-horizontal-center",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.deleteSong(song)
-                                        }
-                                      }
-                                    },
-                                    [_c("i", { staticClass: "fas fa-times" })]
-                                  )
-                                : _vm._e(),
-                              _vm._v(" "),
-                              _c("user-profile", {
-                                attrs: { user: song.user, "show-name": false }
-                              })
+                              _vm.isOwner
+                                ? _c("playlist-admin-controls", {
+                                    attrs: { playlist: _vm.playlist },
+                                    on: {
+                                      "playlist-update": _vm.updatePlaylist
+                                    }
+                                  })
+                                : _vm._e()
                             ],
                             1
                           )
                         : _vm._e()
-                    }),
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex flex-vertical-center" }, [
+                  _c("div", [
+                    _c("img", {
+                      staticStyle: {
+                        "border-radius": "50%",
+                        height: "50px",
+                        width: "50px"
+                      },
+                      attrs: { src: _vm.playlist.user.profile_pic }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "padding-left-10px" }, [
+                    _c(
+                      "div",
+                      { staticClass: "text--color-white font-size--large" },
+                      [_vm._v(_vm._s(_vm.playlist.user.name))]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(0)
+                  ])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "tabs flex flex-align-items-stretch" }, [
+              _c(
+                "div",
+                {
+                  class: [
+                    _vm.songsTabSel && !_vm.contributor ? "tab-selected" : "",
+                    "all-tab",
+                    "tab",
+                    "flex",
+                    "flex-vertical-center",
+                    "flex-horizontal-center",
+                    "font-size--large"
+                  ],
+                  on: { click: _vm.songsTab }
+                },
+                [_c("i", { staticClass: "fas fa-music" })]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  class: [
+                    _vm.addTabSel ? "tab-selected" : "",
+                    "all-tab",
+                    "tab",
+                    "flex",
+                    "flex-vertical-center",
+                    "flex-horizontal-center",
+                    "font-size--large"
+                  ],
+                  on: { click: _vm.addTab }
+                },
+                [_c("i", { staticClass: "fas fa-plus" })]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex contributor-tabs" },
+                _vm._l(_vm.contributors, function(contributor) {
+                  return _c(
+                    "div",
+                    {
+                      class: [
+                        _vm.isContributorSelected(contributor)
+                          ? "tab-selected"
+                          : "",
+                        "contributor-tab",
+                        "tab"
+                      ],
+                      on: {
+                        click: function($event) {
+                          return _vm.setContributor(contributor)
+                        }
+                      }
+                    },
+                    [
+                      _c("user-profile", {
+                        attrs: {
+                          user: contributor.user,
+                          "show-name": _vm.isContributorSelected(contributor)
+                        }
+                      })
+                    ],
                     1
                   )
-                : _vm.addTabSel
-                ? _c("song-adder", {
-                    attrs: {
-                      playlist: _vm.playlist,
-                      "current-songs": _vm.songs,
-                      "song-slots-remaining": _vm.songSlotsRemaining
-                    },
-                    on: { "add-song": _vm.addSong, setLoading: _vm.setLoading }
-                  })
-                : _vm._e()
-            ],
-            1
-          )
-        ]
-      )
-    : _vm._e()
+                }),
+                0
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "body bg--color-grey padding--1" },
+              [
+                _vm.songsTabSel
+                  ? _c(
+                      "div",
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "flex flex--width-100 flex-space-between"
+                          },
+                          [
+                            _c("song-search", {
+                              ref: "search",
+                              staticClass: "flex--width-45 padding-left-10px",
+                              on: {
+                                setLoading: _vm.setLoading,
+                                input: _vm.addTab
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("div", [
+                              _vm._v("You have "),
+                              _c(
+                                "span",
+                                { staticClass: "text--color-sky-blue" },
+                                [_vm._v(_vm._s(_vm.songSlotsRemaining))]
+                              ),
+                              _vm._v(" songs to add!")
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.songs, function(song) {
+                          return !_vm.contributor ||
+                            song.contributor_id == _vm.contributor.id
+                            ? _c(
+                                "song",
+                                { key: song.id, attrs: { song: song } },
+                                [
+                                  song.contributor_id == _vm.userContributor.id
+                                    ? _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "icon-button font-size--large flex flex-vertical-center flex-horizontal-center",
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.deleteSong(song)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "fas fa-times"
+                                          })
+                                        ]
+                                      )
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _c("user-profile", {
+                                    attrs: {
+                                      user: song.user,
+                                      "show-name": false
+                                    }
+                                  })
+                                ],
+                                1
+                              )
+                            : _vm._e()
+                        })
+                      ],
+                      2
+                    )
+                  : _vm.addTabSel
+                  ? _c("song-adder", {
+                      attrs: {
+                        playlist: _vm.playlist,
+                        "current-songs": _vm.songs,
+                        "song-slots-remaining": _vm.songSlotsRemaining
+                      },
+                      on: {
+                        "add-song": _vm.addSong,
+                        setLoading: _vm.setLoading
+                      }
+                    })
+                  : _vm._e()
+              ],
+              1
+            )
+          ]
+        )
+      : _c(
+          "div",
+          {
+            staticClass:
+              "flex--width-100 flex flex-align-items-stretch flex-direction-column"
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "font-size--larger text--color-sky-blue" },
+              [_vm._v("You Have no playlists yet")]
+            ),
+            _vm._v(" "),
+            _c("create-playlist", { on: { newPlaylist: _vm.newPlaylist } }),
+            _vm._v(" "),
+            _c("div", [
+              _vm._v(
+                "\n            After creating a playlist through AUX Control, you should only add / delete songs through AUX Control or else they may be overwritten\n        "
+              )
+            ])
+          ],
+          1
+        )
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -6782,73 +6928,6 @@ var staticRenderFns = [
     return _c("div", [_c("span", { staticClass: "tag" }, [_vm._v("Owner")])])
   }
 ]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Playlists.vue?vue&type=template&id=4ba7f252&scoped=true&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Playlists.vue?vue&type=template&id=4ba7f252&scoped=true& ***!
-  \*******************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("h1", [_vm._v("Playlists")]),
-      _vm._v(" "),
-      _c("h2", [_vm._v("New Playlist")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.newPlaylistName,
-            expression: "newPlaylistName"
-          }
-        ],
-        attrs: { type: "text" },
-        domProps: { value: _vm.newPlaylistName },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.newPlaylistName = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("button", { on: { click: _vm.newPlaylist } }, [_vm._v("Create")]),
-      _vm._v(" "),
-      _vm._l(_vm.playlists, function(playlist) {
-        return _c(
-          "div",
-          [
-            _c("router-link", { attrs: { to: "playlist/" + playlist.id } }, [
-              _vm._v(_vm._s(playlist.name))
-            ])
-          ],
-          1
-        )
-      })
-    ],
-    2
-  )
-}
-var staticRenderFns = []
 render._withStripped = true
 
 
@@ -23269,8 +23348,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_clipboard2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_clipboard2__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _views_App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/App */ "./resources/js/views/App.vue");
 /* harmony import */ var _views_Index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/Index */ "./resources/js/views/Index.vue");
-/* harmony import */ var _views_Playlists__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/Playlists */ "./resources/js/views/Playlists.vue");
-/* harmony import */ var _views_Playlist__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./views/Playlist */ "./resources/js/views/Playlist.vue");
 
 
 
@@ -23288,8 +23365,6 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.mixin({
 });
 
 
-
-
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]({
   mode: 'history',
   routes: [{
@@ -23300,14 +23375,6 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]({
     path: '/:id',
     name: 'home',
     component: _views_Index__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }, {
-    path: '/playlists',
-    name: 'playlists',
-    component: _views_Playlists__WEBPACK_IMPORTED_MODULE_6__["default"]
-  }, {
-    path: '/playlist/:id',
-    name: 'playlist',
-    component: _views_Playlist__WEBPACK_IMPORTED_MODULE_7__["default"]
   }]
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
@@ -23767,7 +23834,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SongAdder_vue_vue_type_template_id_fb0932c4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SongAdder.vue?vue&type=template&id=fb0932c4&scoped=true& */ "./resources/js/components/SongAdder.vue?vue&type=template&id=fb0932c4&scoped=true&");
 /* harmony import */ var _SongAdder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SongAdder.vue?vue&type=script&lang=js& */ "./resources/js/components/SongAdder.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _SongAdder_vue_vue_type_style_index_0_id_fb0932c4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SongAdder.vue?vue&type=style&index=0&id=fb0932c4&scoped=true&lang=css& */ "./resources/js/components/SongAdder.vue?vue&type=style&index=0&id=fb0932c4&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -23775,7 +23844,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _SongAdder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _SongAdder_vue_vue_type_template_id_fb0932c4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
   _SongAdder_vue_vue_type_template_id_fb0932c4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -23804,6 +23873,22 @@ component.options.__file = "resources/js/components/SongAdder.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SongAdder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./SongAdder.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SongAdder.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SongAdder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/SongAdder.vue?vue&type=style&index=0&id=fb0932c4&scoped=true&lang=css&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/SongAdder.vue?vue&type=style&index=0&id=fb0932c4&scoped=true&lang=css& ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SongAdder_vue_vue_type_style_index_0_id_fb0932c4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./SongAdder.vue?vue&type=style&index=0&id=fb0932c4&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SongAdder.vue?vue&type=style&index=0&id=fb0932c4&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SongAdder_vue_vue_type_style_index_0_id_fb0932c4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SongAdder_vue_vue_type_style_index_0_id_fb0932c4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SongAdder_vue_vue_type_style_index_0_id_fb0932c4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SongAdder_vue_vue_type_style_index_0_id_fb0932c4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SongAdder_vue_vue_type_style_index_0_id_fb0932c4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -24420,75 +24505,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Playlist_vue_vue_type_template_id_6dad4cf1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Playlist_vue_vue_type_template_id_6dad4cf1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/views/Playlists.vue":
-/*!******************************************!*\
-  !*** ./resources/js/views/Playlists.vue ***!
-  \******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Playlists_vue_vue_type_template_id_4ba7f252_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Playlists.vue?vue&type=template&id=4ba7f252&scoped=true& */ "./resources/js/views/Playlists.vue?vue&type=template&id=4ba7f252&scoped=true&");
-/* harmony import */ var _Playlists_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Playlists.vue?vue&type=script&lang=js& */ "./resources/js/views/Playlists.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Playlists_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Playlists_vue_vue_type_template_id_4ba7f252_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Playlists_vue_vue_type_template_id_4ba7f252_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  "4ba7f252",
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/views/Playlists.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/views/Playlists.vue?vue&type=script&lang=js&":
-/*!*******************************************************************!*\
-  !*** ./resources/js/views/Playlists.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Playlists_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Playlists.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Playlists.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Playlists_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/views/Playlists.vue?vue&type=template&id=4ba7f252&scoped=true&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/views/Playlists.vue?vue&type=template&id=4ba7f252&scoped=true& ***!
-  \*************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Playlists_vue_vue_type_template_id_4ba7f252_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Playlists.vue?vue&type=template&id=4ba7f252&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Playlists.vue?vue&type=template&id=4ba7f252&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Playlists_vue_vue_type_template_id_4ba7f252_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Playlists_vue_vue_type_template_id_4ba7f252_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

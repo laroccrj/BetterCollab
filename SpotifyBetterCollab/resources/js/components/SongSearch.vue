@@ -22,11 +22,13 @@
         data() {
             return {
                 query: '',
-                items: []
+                items: [],
+                offset: 0,
             }
         },
         methods: {
             async search () {
+                this.offset = 0
                 this.setLoading(true)
                 await axios
                     .get('/api/song/search?q=' + this.query)
@@ -34,6 +36,19 @@
 
                 this.$emit('input', this.items);
                 this.$store.commit('setSongSearchCache', this.items)
+                this.setLoading(false)
+            },
+            async loadMore() {
+                this.setLoading(true)
+
+                this.offset += 50
+                await axios
+                    .get('/api/song/search?q=' + this.query + '&offset=' + this.offset)
+                    .then(response => (this.items = this.items.concat(response.data)))
+
+                this.$emit('input', this.items)
+                this.$store.commit('setSongSearchCache', this.items)
+
                 this.setLoading(false)
             },
             setLoading(loading) {
