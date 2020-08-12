@@ -126,11 +126,13 @@ class SpotifyApiService
         $response = json_decode($result->getBody()->getContents(), true);
         $name = $response['name'];
         $spotifyPlaylistId = $response['id'];
+        $url = $response['external_urls']['spotify'];
 
         $playlist = new Playlist();
         $playlist->setUserId($user->getId())
             ->setName($name)
             ->setSpotifyPlaylistId($spotifyPlaylistId)
+            ->setSpotifyUrl($url)
             ->setCollabLink(hash('sha256', $name . $spotifyPlaylistId))
             ->save();
 

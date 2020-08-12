@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e10103b0-46fc-4ef6-bbec-3085329cc616" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_06_25_035445_add_url_to_playlist_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/db737bcc-eec9-4fb9-8e8a-751d3e9293ce.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/db737bcc-eec9-4fb9-8e8a-751d3e9293ce.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/PlaylistController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/PlaylistController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/SongController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SongController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Playlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Playlist.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/SpotifyApiService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/SpotifyApiService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/CreatePlaylist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/CreatePlaylist.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/SongAdder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SongAdder.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/SongSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SongSearch.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/Playlist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/Playlist.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/Playlists.vue" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -213,12 +200,12 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@3fc0d55" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@22d1dd40" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@3fc0d55" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@6d292a8" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@22d1dd40" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@1978d782" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -237,7 +224,9 @@
       <option name="presentableId" value="Default" />
       <updated>1591491752371</updated>
       <workItem from="1591491753612" duration="106652000" />
-      <workItem from="1591885030832" duration="29575000" />
+      <workItem from="1591885030832" duration="30277000" />
+      <workItem from="1594045599775" duration="18000" />
+      <workItem from="1594045852957" duration="1111000" />
     </task>
     <servers />
   </component>
