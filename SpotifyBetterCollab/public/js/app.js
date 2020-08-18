@@ -2497,6 +2497,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "UserProfile",
   props: {
@@ -2508,6 +2511,22 @@ __webpack_require__.r(__webpack_exports__);
     altText: {
       type: String,
       "default": ''
+    }
+  },
+  computed: {
+    firstInitial: function firstInitial() {
+      return this.user.name.charAt(0).toUpperCase();
+    },
+    colorStyle: function colorStyle() {
+      return {
+        backgroundColor: this.user.color,
+        borderRadius: '50%',
+        height: '50px',
+        width: '50px',
+        textAlign: 'center',
+        lineHeight: '50px',
+        color: '#fff'
+      };
     }
   }
 });
@@ -3454,7 +3473,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.name[data-v-67528743] {\n    margin-left:10px;\n}\n", ""]);
+exports.push([module.i, "\n.name[data-v-67528743] {\n    margin-left: 10px;\n}\n", ""]);
 
 // exports
 
@@ -6339,12 +6358,20 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "flex flex-vertical-center" }, [
-    _c("div", [
-      _c("img", {
-        staticStyle: { "border-radius": "50%", height: "50px", width: "50px" },
-        attrs: { src: _vm.user.profile_pic, alt: _vm.altText }
-      })
-    ]),
+    _vm.user.profile_pic
+      ? _c("div", [
+          _c("img", {
+            staticStyle: {
+              "border-radius": "50%",
+              height: "50px",
+              width: "50px"
+            },
+            attrs: { src: _vm.user.profile_pic, alt: _vm.altText }
+          })
+        ])
+      : _c("div", { staticClass: "font-size--large", style: _vm.colorStyle }, [
+          _vm._v("\n        " + _vm._s(_vm.firstInitial) + "\n    ")
+        ]),
     _vm._v(" "),
     _vm.showName
       ? _c("div", { staticClass: "name" }, [

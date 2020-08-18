@@ -12,7 +12,7 @@ class User extends Model
     const SESSION_USER_ID = 'user_id';
     protected $table = 'user';
     protected $primaryKey = 'id';
-    protected $fillable = ['spotify_id', 'access_token', 'expires', 'refresh_token', 'name', 'profile_pic'];
+    protected $fillable = ['spotify_id', 'access_token', 'expires', 'refresh_token', 'name', 'profile_pic', 'color'];
     protected $hidden = ['access_token', 'refresh_token', 'expires'];
 
     public function playlists()
@@ -160,5 +160,29 @@ class User extends Model
     {
         $this->profile_pic = $profile_pic;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getColor(): string
+    {
+        return $this->color;
+    }
+
+    /**
+     * @param string $color
+     * @return User
+     */
+    public function setColor(string $color): User
+    {
+        $this->color = $color;
+        return $this;
+    }
+
+    public function setRandomColor(): User
+    {
+        $color = sprintf("#%06x",rand(0,16777215));
+        return $this->setColor($color);
     }
 }

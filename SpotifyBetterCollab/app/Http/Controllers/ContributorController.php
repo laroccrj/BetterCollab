@@ -79,10 +79,10 @@ class ContributorController extends Controller
 
         if (!$user) {
             $user = new User();
-            $user->setSpotifyId($id);
+            $user->setSpotifyId($id)
+                ->setRandomColor();
         }
 
-        new User();
         $user->setAccessToken($accessToken)
             ->setExpires($expires)
             ->setRefreshToken($refreshToken)
