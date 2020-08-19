@@ -23,7 +23,7 @@ class UserController extends Controller
             $profile = $spotify->getProfile($user);
 
             $user->setName($profile['display_name'])
-                ->setProfilePic($profile['images'][0]['url'] ?? '/img/default.png')
+                ->setProfilePic($profile['images'][0]['url'] ?? null)
                 ->save();
         }
 
