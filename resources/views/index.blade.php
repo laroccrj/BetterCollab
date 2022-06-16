@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{csrf_token()}}">
     <title>AUX Control</title>
     <link href=" {{ mix('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ url('/css/reset.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ mix('css/reset.css') }}" />
     <style>
         html, body, #app {
             height: 100vh;
